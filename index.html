@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI → ML → Deep Learning Family Tree</title>
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #111826;
+      --text: #e6eef7;
+      --muted: #9db0c7;
+      --accent: #6aa5ff;
+      --accent-2: #7cf1c8;
+      --accent-3: #ff6b9d;
+      --accent-4: #ffd93d;
+      --ring: rgba(106,165,255,.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(124,241,200,.06), transparent 60%),
+                  radial-gradient(1200px 800px at 120% 10%, rgba(106,165,255,.06), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 1200px;
+      margin: 48px auto;
+      padding: 0 20px 40px;
+    }
+    header {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    h1 { font-size: clamp(24px, 3vw, 34px); margin: 0; }
+    p.lead { color: var(--muted); margin: 0; }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border: 1px solid rgba(148,163,184,.12);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25), 0 0 0 1px rgba(106,165,255,.05) inset;
+    }
+
+    /* Tree using <details> */
+    details {
+      border-left: 2px solid rgba(157,176,199,.22);
+      padding-left: 14px;
+      margin: 6px 0 2px 0;
+    }
+    summary {
+      list-style: none;
+      cursor: pointer;
+      position: relative;
+      padding: 8px 10px 8px 28px;
+      border-radius: 12px;
+      transition: background .15s ease, box-shadow .15s ease;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary:before {
+      content: "▸";
+      position: absolute;
+      left: 6px; top: 8px;
+      width: 18px;
+      text-align: center;
+      color: var(--accent);
+      transition: transform .2s ease;
+    }
+    details[open] > summary:before { transform: rotate(90deg); }
+    summary:hover { background: rgba(106,165,255,.08); }
+    details[open] > summary { background: rgba(124,241,200,.06); box-shadow: 0 0 0 2px var(--ring); }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(157,176,199,.25);
+      color: var(--muted);
+      margin-left: 8px;
+    }
+    .tag.hot { background: rgba(255,107,157,.15); border-color: var(--accent-3); color: var(--accent-3); }
+    .tag.emerging { background: rgba(255,217,61,.15); border-color: var(--accent-4); color: var(--accent-4); }
+    
+    .branch { color: var(--accent-2); font-weight: 600; }
+    .model { color: var(--accent); }
+    .desc { color: var(--muted); font-size: 14px; margin-left: 28px; margin-bottom: 8px; }
+
+    .legend { display:flex; gap:12px; flex-wrap:wrap; margin:10px 0 16px; }
+    .pill{padding:4px 10px;border-radius:999px;border:1px solid rgba(157,176,199,.25);color:var(--muted);font-size:12px}
+
+    footer { margin-top: 22px; color: var(--muted); font-size: 13px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    ul { margin: 8px 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    li.model { color: var(--accent); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+      padding: 16px;
+      background: rgba(17,24,38,.6);
+      border-radius: 12px;
+      border: 1px solid rgba(148,163,184,.08);
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--accent-2);
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>AI → Machine Learning → Deep Learning — Family Tree</h1>
+      <p class="lead">Comprehensive, expandable tree mapping the AI ecosystem from foundational concepts to cutting-edge model families and applications.</p>
+      <div class="legend">
+        <span class="pill">🌿 Branch = domain (NLP, CV, robotics, etc.)</span>
+        <span class="pill">🔷 Family = related model line</span>
+        <span class="pill">✨ Model = concrete checkpoint/version</span>
+        <span class="pill" style="background: rgba(255,107,157,.15); border-color: #ff6b9d; color: #ff6b9d;">🔥 Hot = trending/breakthrough</span>
+        <span class="pill" style="background: rgba(255,217,61,.15); border-color: #ffd93d; color: #ffd93d;">⚡ Emerging = cutting-edge research</span>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Model Families</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">200+</div>
+        <div class="stat-label">Individual Models</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">12</div>
+        <div class="stat-label">AI Domains</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2025</div>
+        <div class="stat-label">Latest Updates</div>
+      </div>
+    </div>
+
+    <section class="card">
+      <details open>
+        <summary><span class="branch">Artificial Intelligence (AI)</span> <span class="tag">umbrella field</span></summary>
+        
+        <!-- Non-ML AI Methods -->
+        <details>
+          <summary><span class="branch">Symbolic AI / Expert Systems</span> <span class="tag">rule-based</span></summary>
+          <div class="desc">Knowledge representation, logic programming, and rule-based reasoning systems.</div>
+          <details>
+            <summary>🔷 Knowledge Graphs</summary>
+            <ul>
+              <li class="model">Neo4j Graph Database</li>
+              <li class="model">Cypher Query Language</li>
+              <li class="model">Google Knowledge Graph</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Logic Programming</summary>
+            <ul>
+              <li class="model">Prolog</li>
+              <li class="model">Answer Set Programming (ASP)</li>
+            </ul>
+          </details>
+        </details>
+
+        <details open>
+          <summary><span class="branch">Machine Learning (ML)</span> <span class="tag">learns from data</span></summary>
+          
+          <!-- Classical ML -->
+          <details>
+            <summary><span class="branch">Classical Machine Learning</span> <span class="tag">traditional algorithms</span></summary>
+            <details>
+              <summary>🔷 Supervised Learning</summary>
+              <ul>
+                <li class="model">Linear/Logistic Regression</li>
+                <li class="model">Support Vector Machines (SVM)</li>
+                <li class="model">Random Forest</li>
+                <li class="model">XGBoost / LightGBM</li>
+                <li class="model">Naive Bayes</li>
+              </ul>
+            </details>
+            <details>
+              <summary>🔷 Unsupervised Learning</summary>
+              <ul>
+                <li class="model">K-Means Clustering</li>
+                <li class="model">DBSCAN</li>
+                <li class="model">Principal Component Analysis (PCA)</li>
+                <li class="model">t-SNE / UMAP</li>
+              </ul>
+            </details>
+            <details>
+              <summary>🔷 Ensemble Methods</summary>
+              <ul>
+                <li class="model">AdaBoost</li>
+                <li class="model">Gradient Boosting</li>
+                <li class="model">Voting Classifiers</li>
+              </ul>
+            </details>
+          </details>
+
+          <!-- Deep Learning -->
+          <details open>
+            <summary><span class="branch">Deep Learning (DL)</span> <span class="tag">neural networks</span></summary>
+
+            <!-- NLP -->
+            <details>
+              <summary>🌿 <span class="branch">Natural Language Processing (NLP)</span> <span class="tag">text & language</span></summary>
+              <details>
+                <summary>🔷 Large Language Models (LLMs)</summary>
+                <div class="desc">Foundation models trained on massive text corpora for general language understanding and generation.</div>
+                <details>
+                  <summary>GPT Family (OpenAI)</summary>
+                  <ul>
+                    <li class="model">GPT‑1 <span class="tag">2018</span></li>
+                    <li class="model">GPT‑2 <span class="tag">1.5B params</span></li>
+                    <li class="model">DistilGPT‑2 <span class="tag">compressed</span></li>
+                    <li class="model">GPT‑3 <span class="tag">175B params</span></li>
+                    <li class="model">GPT‑3.5‑turbo</li>
+                    <li class="model">GPT‑4 / GPT‑4‑turbo</li>
+                    <li class="model">GPT‑4o <span class="tag hot">multimodal</span></li>
+                    <li class="model">GPT‑4.1 <span class="tag hot">latest</span></li>
+                    <li class="model">o1 / o1‑mini <span class="tag hot">reasoning</span></li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>Claude Family (Anthropic)</summary>
+                  <ul>
+                    <li class="model">Claude 1.0</li>
+                    <li class="model">Claude 2.0 / 2.1</li>
+                    <li class="model">Claude 3 Haiku <span class="tag">fast</span></li>
+                    <li class="model">Claude 3 Sonnet <span class="tag">balanced</span></li>
+                    <li class="model">Claude 3 Opus <span class="tag">most capable</span></li>
+                    <li class="model">Claude 3.5 Sonnet <span class="tag hot">enhanced</span></li>
+                    <li class="model">Claude 4 Sonnet <span class="tag hot">latest</span></li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>Gemini Family (Google)</summary>
+                  <ul>
+                    <li class="model">LaMDA <span class="tag">conversation</span></li>
+                    <li class="model">PaLM / PaLM 2</li>
+                    <li class="model">Gemini Pro</li>
+                    <li class="model">Gemini Ultra</li>
+                    <li class="model">Gemini 1.5 <span class="tag">long context</span></li>
+                    <li class="model">Gemini 2.0 <span class="tag hot">multimodal</span></li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>Meta LLaMA Family</summary>
+                  <ul>
+                    <li class="model">LLaMA 1 <span class="tag">7B-65B</span></li>
+                    <li class="model">LLaMA 2 <span class="tag">chat variants</span></li>
+                    <li class="model">Code Llama <span class="tag">programming</span></li>
+                    <li class="model">LLaMA 3 / 3.1 <span class="tag hot">405B</span></li>
+                    <li class="model">LLaMA 3.2 <span class="tag hot">multimodal</span></li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>Open Source Alternatives</summary>
+                  <ul>
+                    <li class="model">Mistral 7B / 8x7B (Mixtral)</li>
+                    <li class="model">Falcon 7B / 40B / 180B</li>
+                    <li class="model">Alpaca (Stanford)</li>
+                    <li class="model">Vicuna (LMSYS)</li>
+                    <li class="model">MPT (MosaicML)</li>
+                    <li class="model">Qwen (Alibaba)</li>
+                    <li class="model">Yi (01.AI)</li>
+                  </ul>
+                </details>
+              </details>
+              <details>
+                <summary>🔷 Specialized NLP Models</summary>
+                <details>
+                  <summary>Understanding Models (Encoders)</summary>
+                  <ul>
+                    <li class="model">BERT / RoBERTa</li>
+                    <li class="model">DeBERTa</li>
+                    <li class="model">ELECTRA</li>
+                    <li class="model">DistilBERT <span class="tag">compressed</span></li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>Text-to-Text Models</summary>
+                  <ul>
+                    <li class="model">T5 / UL2</li>
+                    <li class="model">BART</li>
+                    <li class="model">Pegasus <span class="tag">summarization</span></li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>Embedding Models</summary>
+                  <ul>
+                    <li class="model">Sentence-BERT</li>
+                    <li class="model">OpenAI text-embedding-ada-002</li>
+                    <li class="model">E5 / BGE</li>
+                    <li class="model">Instructor <span class="tag">task-specific</span></li>
+                  </ul>
+                </details>
+              </details>
+              <details>
+                <summary>🔷 Code Generation Models</summary>
+                <ul>
+                  <li class="model">GitHub Copilot (OpenAI Codex)</li>
+                  <li class="model">CodeT5 / CodeGen</li>
+                  <li class="model">StarCoder / Code Llama</li>
+                  <li class="model">Replit Code v1.5</li>
+                  <li class="model">Amazon CodeWhisperer</li>
+                  <li class="model">Tabnine</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Computer Vision -->
+            <details>
+              <summary>🌿 <span class="branch">Computer Vision (CV)</span> <span class="tag">images & video</span></summary>
+              <details>
+                <summary>🔷 Object Detection & Segmentation</summary>
+                <details>
+                  <summary>YOLO Family</summary>
+                  <ul>
+                    <li class="model">YOLOv1 → v3 <span class="tag">early versions</span></li>
+                    <li class="model">YOLOv4 / YOLOv5</li>
+                    <li class="model">YOLOX / YOLOv6</li>
+                    <li class="model">YOLOv8 <span class="tag">ultralytics</span></li>
+                    <li class="model">YOLO11 <span class="tag hot">latest</span></li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>R-CNN Family</summary>
+                  <ul>
+                    <li class="model">R-CNN</li>
+                    <li class="model">Fast R-CNN</li>
+                    <li class="model">Faster R-CNN</li>
+                    <li class="model">Mask R-CNN <span class="tag">segmentation</span></li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>Modern Detection</summary>
+                  <ul>
+                    <li class="model">SSD (Single Shot Detector)</li>
+                    <li class="model">RetinaNet</li>
+                    <li class="model">DETR (Detection Transformer)</li>
+                    <li class="model">EfficientDet</li>
+                  </ul>
+                </details>
+              </details>
+              <details>
+                <summary>🔷 Image Classification & Backbones</summary>
+                <details>
+                  <summary>Convolutional Networks</summary>
+                  <ul>
+                    <li class="model">LeNet / AlexNet <span class="tag">historical</span></li>
+                    <li class="model">VGG-16 / VGG-19</li>
+                    <li class="model">ResNet (18/34/50/101/152)</li>
+                    <li class="model">ResNeXt / Wide ResNet</li>
+                    <li class="model">DenseNet</li>
+                    <li class="model">EfficientNet v1/v2</li>
+                    <li class="model">RegNet</li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>Vision Transformers</summary>
+                  <ul>
+                    <li class="model">Vision Transformer (ViT)</li>
+                    <li class="model">DeiT (Data-efficient ViT)</li>
+                    <li class="model">Swin Transformer</li>
+                    <li class="model">ConvNeXt <span class="tag">modernized ConvNet</span></li>
+                    <li class="model">MaxViT</li>
+                  </ul>
+                </details>
+              </details>
+              <details>
+                <summary>🔷 Image Generation</summary>
+                <details>
+                  <summary>Diffusion Models</summary>
+                  <ul>
+                    <li class="model">DDPM / DDIM</li>
+                    <li class="model">Stable Diffusion 1.5 / 2.0</li>
+                    <li class="model">Stable Diffusion XL (SDXL)</li>
+                    <li class="model">Stable Diffusion 3 <span class="tag hot">latest</span></li>
+                    <li class="model">DALL·E 2 / DALL·E 3</li>
+                    <li class="model">Midjourney v5 / v6</li>
+                    <li class="model">Imagen (Google)</li>
+                    <li class="model">Adobe Firefly</li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>GANs & Other Generative</summary>
+                  <ul>
+                    <li class="model">StyleGAN 2/3</li>
+                    <li class="model">BigGAN</li>
+                    <li class="model">VQ-VAE / VQ-GAN</li>
+                    <li class="model">Parti (Google)</li>
+                  </ul>
+                </details>
+              </details>
+              <details>
+                <summary>🔷 Video Understanding</summary>
+                <ul>
+                  <li class="model">Video Swin Transformer</li>
+                  <li class="model">TimeSformer</li>
+                  <li class="model">SlowFast Networks</li>
+                  <li class="model">I3D (Inflated 3D ConvNet)</li>
+                  <li class="model">OpenAI Sora <span class="tag hot">video generation</span></li>
+                  <li class="model">Runway Gen-2</li>
+                  <li class="model">Stable Video Diffusion</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Speech / Audio -->
+            <details>
+              <summary>🌿 <span class="branch">Speech & Audio AI</span> <span class="tag">sound processing</span></summary>
+              <details>
+                <summary>🔷 Speech Recognition (ASR)</summary>
+                <ul>
+                  <li class="model">Whisper (OpenAI) <span class="tag hot">multilingual</span></li>
+                  <li class="model">Wav2Vec 2.0 (Meta)</li>
+                  <li class="model">DeepSpeech (Mozilla)</li>
+                  <li class="model">Conformer</li>
+                  <li class="model">Google Speech-to-Text</li>
+                  <li class="model">Amazon Transcribe</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Text-to-Speech (TTS)</summary>
+                <ul>
+                  <li class="model">Tacotron 2</li>
+                  <li class="model">WaveNet / WaveGlow</li>
+                  <li class="model">VITS (End-to-end TTS)</li>
+                  <li class="model">Bark (Suno AI) <span class="tag">expressive</span></li>
+                  <li class="model">ElevenLabs <span class="tag hot">commercial</span></li>
+                  <li class="model">Tortoise TTS</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Music & Audio Generation</summary>
+                <ul>
+                  <li class="model">MusicLM (Google)</li>
+                  <li class="model">Suno AI <span class="tag hot">commercial</span></li>
+                  <li class="model">Udio <span class="tag hot">commercial</span></li>
+                  <li class="model">Jukebox (OpenAI)</li>
+                  <li class="model">AudioCraft (Meta)</li>
+                  <li class="model">MusiCNN</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Audio Processing</summary>
+                <ul>
+                  <li class="model">PANNs (Audio Tagging)</li>
+                  <li class="model">YAMNet (Audio Event Detection)</li>
+                  <li class="model">AudioMAE</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Multimodal -->
+            <details>
+              <summary>🌿 <span class="branch">Multimodal AI</span> <span class="tag hot">text + image + audio + video</span></summary>
+              <details>
+                <summary>🔷 Vision-Language Models</summary>
+                <ul>
+                  <li class="model">GPT‑4o / GPT‑4‑vision <span class="tag hot">OpenAI</span></li>
+                  <li class="model">Claude 3 Opus/Sonnet (vision)</li>
+                  <li class="model">Gemini Pro Vision / Ultra</li>
+                  <li class="model">LLaVA (Large Language and Vision)</li>
+                  <li class="model">BLIP / BLIP-2</li>
+                  <li class="model">Flamingo (DeepMind)</li>
+                  <li class="model">Kosmos‑1/2 (Microsoft)</li>
+                  <li class="model">Qwen-VL</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 CLIP & Embedding Models</summary>
+                <ul>
+                  <li class="model">CLIP (OpenAI)</li>
+                  <li class="model">ALIGN (Google)</li>
+                  <li class="model">CoCa (Contrastive Captioners)</li>
+                  <li class="model">SigLIP</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Multimodal Generation</summary>
+                <ul>
+                  <li class="model">GPT-4o <span class="tag hot">text→image→text</span></li>
+                  <li class="model">Gemini 2.0 <span class="tag hot">comprehensive</span></li>
+                  <li class="model">Any-to-Any (Meta) <span class="tag emerging">research</span></li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Robotics -->
+            <details>
+              <summary>🌿 <span class="branch">Robotics & Embodied AI</span> <span class="tag">physical world</span></summary>
+              <details>
+                <summary>🔷 Manipulation & Control</summary>
+                <ul>
+                  <li class="model">RT-1 / RT-2 (Google)</li>
+                  <li class="model">PaLM-E <span class="tag">language + robotics</span></li>
+                  <li class="model">RoboCat (DeepMind)</li>
+                  <li class="model">OpenVLA <span class="tag emerging">vision-language-action</span></li>
+                  <li class="model">SARA (Stanford)</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Simulation & Training</summary>
+                <ul>
+                  <li class="model">Isaac Gym (NVIDIA)</li>
+                  <li class="model">MuJoCo</li>
+                  <li class="model">PyBullet</li>
+                  <li class="model">Habitat (Meta)</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Navigation & SLAM</summary>
+                <ul>
+                  <li class="model">Neural SLAM</li>
+                  <li class="model">PointNet++</li>
+                  <li class="model">DD-PPO (Distributed RL)</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Reinforcement Learning -->
+            <details>
+              <summary>🌿 <span class="branch">Reinforcement Learning (RL)</span> <span class="tag">decision making</span></summary>
+              <details>
+                <summary>🔷 Game Playing</summary>
+                <ul>
+                  <li class="model">AlphaGo / AlphaZero</li>
+                  <li class="model">MuZero</li>
+                  <li class="model">OpenAI Five (Dota 2)</li>
+                  <li class="model">AlphaStar (StarCraft II)</li>
+                  <li class="model">Agent57 (Atari)</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 RLHF & Alignment</summary>
+                <div class="desc">Human feedback training for AI alignment and safety.</div>
+                <ul>
+                  <li class="model">InstructGPT (OpenAI)</li>
+                  <li class="model">Constitutional AI (Anthropic)</li>
+                  <li class="model">Sparrow (DeepMind)</li>
+                  <li class="model">LaMDA Safety Training</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Policy Learning</summary>
+                <ul>
+                  <li class="model">PPO (Proximal Policy Optimization)</li>
+                  <li class="model">SAC (Soft Actor-Critic)</li>
+                  <li class="model">Rainbow DQN</li>
+                  <li class="model">IMPALA</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Recommendation Systems -->
+            <details>
+              <summary>🌿 <span class="branch">Recommendation Systems</span> <span class="tag">personalization</span></summary>
+              <details>
+                <summary>🔷 Deep Recommenders</summary>
+                <ul>
+                  <li class="model">Neural Collaborative Filtering</li>
+                  <li class="model">Wide & Deep (Google)</li>
+                  <li class="model">DeepFM</li>
+                  <li class="model">DIN / DIEN (Alibaba)</li>
+                  <li class="model">PinSage (Pinterest)</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Sequential Recommendations</summary>
+                <ul>
+                  <li class="model">SASRec (Self-Attention)</li>
+                  <li class="model">BERT4Rec</li>
+                  <li class="model">GRU4Rec</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Drug Discovery & Science -->
+            <details>
+              <summary>🌿 <span class="branch">AI for Science & Drug Discovery</span> <span class="tag emerging">scientific AI</span></summary>
+              <details>
+                <summary>🔷 Protein Folding & Structure</summary>
+                <ul>
+                  <li class="model">AlphaFold 2/3 (DeepMind) <span class="tag hot">breakthrough</span></li>
+                  <li class="model">ESMFold (Meta)</li>
+                  <li class="model">ChimeraX AlphaFold</li>
+                  <li class="model">ColabFold</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Drug Discovery</summary>
+                <ul>
+                  <li class="model">AlphaFold DB</li>
+                  <li class="model">MolGAN</li>
+                  <li class="model">Junction Tree VAE</li>
+                  <li class="model">ChemBERTa</li>
+                  <li class="model">MegaMolBART</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Materials Science</summary>
+                <ul>
+                  <li class="model">Crystal Graph Neural Networks</li>
+                  <li class="model">SchNet</li>
+                  <li class="model">Materials Project ML</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Autonomous Systems -->
+            <details>
+              <summary>🌿 <span class="branch">Autonomous Systems</span> <span class="tag">self-driving</span></summary>
+              <details>
+                <summary>🔷 Self-Driving Cars</summary>
+                <ul>
+                  <li class="model">Tesla FSD (Full Self-Driving)</li>
+                  <li class="model">Waymo Driver</li>
+                  <li class="model">Cruise AV</li>
+                  <li class="model">Mobileye EyeQ</li>
+                  <li class="model">NVIDIA DRIVE</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Perception Systems</summary>
+                <ul>
+                  <li class="model">BEVFormer (Bird's Eye View)</li>
+                  <li class="model">DETR3D</li>
+                  <li class="model">PointPillars</li>
+                  <li class="model">CenterPoint</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Drones & UAVs</summary>
+                <ul>
+                  <li class="model">DJI AI Flight Control</li>
+                  <li class="model">AirSim (Microsoft)</li>
+                  <li class="model">FlightGoggles</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Time Series & Forecasting -->
+            <details>
+              <summary>🌿 <span class="branch">Time Series & Forecasting</span> <span class="tag">temporal data</span></summary>
+              <details>
+                <summary>🔷 Deep Time Series Models</summary>
+                <ul>
+                  <li class="model">LSTM / GRU</li>
+                  <li class="model">Temporal Convolutional Networks</li>
+                  <li class="model">Transformer for Time Series</li>
+                  <li class="model">N-BEATS</li>
+                  <li class="model">DeepAR (Amazon)</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Foundation Models for Forecasting</summary>
+                <ul>
+                  <li class="model">TimeGPT <span class="tag emerging">Nixtla</span></li>
+                  <li class="model">Chronos (Amazon) <span class="tag emerging">zero-shot</span></li>
+                  <li class="model">ForecastPFN</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Graph Neural Networks -->
+            <details>
+              <summary>🌿 <span class="branch">Graph Neural Networks</span> <span class="tag">structured data</span></summary>
+              <details>
+                <summary>🔷 Core GNN Architectures</summary>
+                <ul>
+                  <li class="model">Graph Convolutional Networks (GCN)</li>
+                  <li class="model">GraphSAGE</li>
+                  <li class="model">Graph Attention Networks (GAT)</li>
+                  <li class="model">Graph Transformer</li>
+                  <li class="model">Message Passing Neural Networks</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Applications</summary>
+                <ul>
+                  <li class="model">Social Network Analysis</li>
+                  <li class="model">Knowledge Graph Reasoning</li>
+                  <li class="model">Molecular Property Prediction</li>
+                  <li class="model">Traffic Flow Prediction</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- AI Agents -->
+            <details>
+              <summary>🌿 <span class="branch">AI Agents & Planning</span> <span class="tag hot">autonomous agents</span></summary>
+              <details>
+                <summary>🔷 LLM-based Agents</summary>
+                <ul>
+                  <li class="model">AutoGPT <span class="tag">autonomous</span></li>
+                  <li class="model">LangChain Agents</li>
+                  <li class="model">ReAct (Reasoning + Acting)</li>
+                  <li class="model">Toolformer</li>
+                  <li class="model">WebGPT</li>
+                  <li class="model">Code Interpreter (OpenAI)</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Multi-Agent Systems</summary>
+                <ul>
+                  <li class="model">AutoGen (Microsoft) <span class="tag hot">multi-agent</span></li>
+                  <li class="model">CrewAI</li>
+                  <li class="model">MetaGPT</li>
+                  <li class="model">ChatDev</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Planning & Reasoning</summary>
+                <ul>
+                  <li class="model">Tree of Thoughts</li>
+                  <li class="model">Chain-of-Thought Prompting</li>
+                  <li class="model">Self-Consistency Decoding</li>
+                  <li class="model">Program-aided Language Models</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Generative AI -->
+            <details>
+              <summary>🌿 <span class="branch">Generative AI Architectures</span> <span class="tag">creation</span></summary>
+              <details>
+                <summary>🔷 Transformer Architectures</summary>
+                <ul>
+                  <li class="model">Vanilla Transformer</li>
+                  <li class="model">GPT (Decoder-only)</li>
+                  <li class="model">BERT (Encoder-only)</li>
+                  <li class="model">T5 (Encoder-Decoder)</li>
+                  <li class="model">PaLM (Pathways)</li>
+                  <li class="model">Switch Transformer</li>
+                  <li class="model">Mamba <span class="tag emerging">state space</span></li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Diffusion Models</summary>
+                <ul>
+                  <li class="model">DDPM (Denoising Diffusion)</li>
+                  <li class="model">Stable Diffusion</li>
+                  <li class="model">DALL·E 2/3</li>
+                  <li class="model">Imagen / Parti</li>
+                  <li class="model">ControlNet <span class="tag">controllable generation</span></li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Variational Models</summary>
+                <ul>
+                  <li class="model">VAE (Variational Autoencoder)</li>
+                  <li class="model">β-VAE</li>
+                  <li class="model">VQ-VAE / VQ-VAE-2</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- AI Safety & Alignment -->
+            <details>
+              <summary>🌿 <span class="branch">AI Safety & Alignment</span> <span class="tag emerging">responsible AI</span></summary>
+              <details>
+                <summary>🔷 Alignment Techniques</summary>
+                <ul>
+                  <li class="model">RLHF (Reinforcement Learning from Human Feedback)</li>
+                  <li class="model">Constitutional AI (Anthropic)</li>
+                  <li class="model">AI Safety via Debate</li>
+                  <li class="model">Iterated Amplification</li>
+                  <li class="model">Red Teaming Methods</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Interpretability & Explainability</summary>
+                <ul>
+                  <li class="model">LIME / SHAP</li>
+                  <li class="model">Attention Visualization</li>
+                  <li class="model">Concept Activation Vectors</li>
+                  <li class="model">Mechanistic Interpretability</li>
+                  <li class="model">Anthropic's Circuit Analysis</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Robustness & Security</summary>
+                <ul>
+                  <li class="model">Adversarial Training</li>
+                  <li class="model">Certified Defenses</li>
+                  <li class="model">Differential Privacy</li>
+                  <li class="model">Federated Learning</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Edge AI & Optimization -->
+            <details>
+              <summary>🌿 <span class="branch">Edge AI & Model Optimization</span> <span class="tag">efficiency</span></summary>
+              <details>
+                <summary>🔷 Model Compression</summary>
+                <ul>
+                  <li class="model">Knowledge Distillation</li>
+                  <li class="model">Pruning (Magnitude/Structured)</li>
+                  <li class="model">Quantization (INT8/INT4)</li>
+                  <li class="model">Low-Rank Factorization</li>
+                  <li class="model">LoRA (Low-Rank Adaptation)</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Mobile & Edge Models</summary>
+                <ul>
+                  <li class="model">MobileNet v1/v2/v3</li>
+                  <li class="model">EfficientNet</li>
+                  <li class="model">TinyBERT</li>
+                  <li class="model">DistilBERT</li>
+                  <li class="model">TensorFlow Lite</li>
+                  <li class="model">ONNX Runtime</li>
+                  <li class="model">Apple Core ML</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Specialized Domains -->
+            <details>
+              <summary>🌿 <span class="branch">Domain-Specific AI</span> <span class="tag">specialized applications</span></summary>
+              <details>
+                <summary>🔷 Healthcare & Medical AI</summary>
+                <ul>
+                  <li class="model">Med-PaLM (Google)</li>
+                  <li class="model">GPT-4 Medical</li>
+                  <li class="model">CheXNet (Chest X-ray)</li>
+                  <li class="model">DeepMind AlphaFold</li>
+                  <li class="model">IBM Watson Health</li>
+                  <li class="model">Radiology AI (Various)</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Finance & Trading</summary>
+                <ul>
+                  <li class="model">BloombergGPT</li>
+                  <li class="model">FinBERT</li>
+                  <li class="model">Algorithmic Trading AI</li>
+                  <li class="model">Risk Management Models</li>
+                  <li class="model">Fraud Detection Systems</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Legal AI</summary>
+                <ul>
+                  <li class="model">Legal BERT variants</li>
+                  <li class="model">Contract Analysis AI</li>
+                  <li class="model">Case Law Search</li>
+                  <li class="model">Patent Analysis</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Education & Learning</summary>
+                <ul>
+                  <li class="model">Khan Academy AI Tutor</li>
+                  <li class="model">Duolingo AI</li>
+                  <li class="model">Adaptive Learning Systems</li>
+                  <li class="model">Academic Writing Assistants</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Emerging & Research -->
+            <details>
+              <summary>🌿 <span class="branch">Emerging AI Research</span> <span class="tag emerging">cutting-edge</span></summary>
+              <details>
+                <summary>🔷 Foundation Model Research</summary>
+                <ul>
+                  <li class="model">GPT-5 <span class="tag emerging">rumored</span></li>
+                  <li class="model">Claude 4+ <span class="tag emerging">future</span></li>
+                  <li class="model">Gemini Advanced</li>
+                  <li class="model">Meta LLaMA 4 <span class="tag emerging">development</span></li>
+                  <li class="model">Mixture of Experts (MoE) scaling</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Novel Architectures</summary>
+                <ul>
+                  <li class="model">Mamba (State Space Models) <span class="tag emerging">efficiency</span></li>
+                  <li class="model">RetNet (Alternative to Transformers)</li>
+                  <li class="model">Hyena (Subquadratic Attention)</li>
+                  <li class="model">Kolmogorov-Arnold Networks</li>
+                  <li class="model">Liquid Neural Networks</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 AGI Research</summary>
+                <ul>
+                  <li class="model">OpenAI Q* <span class="tag emerging">rumored reasoning</span></li>
+                  <li class="model">DeepMind Gato <span class="tag">generalist agent</span></li>
+                  <li class="model">AdA (Adaptive Agent)</li>
+                  <li class="model">Artificial General Intelligence projects</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Neuromorphic & Quantum-AI</summary>
+                <ul>
+                  <li class="model">Intel Loihi (Neuromorphic)</li>
+                  <li class="model">IBM TrueNorth</li>
+                  <li class="model">Quantum Machine Learning</li>
+                  <li class="model">Variational Quantum Circuits</li>
+                </ul>
+              </details>
+            </details>
+
+          </details>
+        </details>
+
+        <!-- Alternative ML Approaches -->
+        <details>
+          <summary><span class="branch">Alternative ML Paradigms</span> <span class="tag">non-deep learning</span></summary>
+          <details>
+            <summary>🔷 Evolutionary & Genetic Algorithms</summary>
+            <ul>
+              <li class="model">NEAT (NeuroEvolution)</li>
+              <li class="model">Genetic Programming</li>
+              <li class="model">Differential Evolution</li>
+              <li class="model">Particle Swarm Optimization</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Probabilistic & Bayesian ML</summary>
+            <ul>
+              <li class="model">Gaussian Processes</li>
+              <li class="model">Bayesian Neural Networks</li>
+              <li class="model">Variational Inference</li>
+              <li class="model">Hidden Markov Models</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Online & Continual Learning</summary>
+            <ul>
+              <li class="model">Online Gradient Descent</li>
+              <li class="model">Elastic Weight Consolidation</li>
+              <li class="model">Progressive Neural Networks</li>
+              <li class="model">Meta-Learning (MAML)</li>
+            </ul>
+          </details>
+        </details>
+
+      </details>
+    </section>
+
+    <footer>
+      *This family tree includes both established and emerging models. Some future versions are speculative. 
+      <strong>Last updated:</strong> August 2025 | 
+      <a href="#" onclick="expandAll()">Expand All</a> | 
+      <a href="#" onclick="collapseAll()">Collapse All</a>
+    </footer>
+  </div>
+
+  <script>
+    function expandAll() {
+      document.querySelectorAll('details').forEach(detail => detail.open = true);
+    }
+    
+    function collapseAll() {
+      document.querySelectorAll('details').forEach(detail => detail.open = false);
+      // Keep the main AI branch open
+      document.querySelector('details').open = true;
+    }
+
+    // Add click analytics
+    document.querySelectorAll('summary').forEach(summary => {
+      summary.addEventListener('click', (e) => {
+        const text = e.target.textContent.trim();
+        console.log(`Clicked: ${text}`);
+      });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'Enter') {
+        const focused = document.activeElement;
+        if (focused.tagName === 'SUMMARY') {
+          focused.parentElement.open = true;
+        }
+      } else if (e.key === 'ArrowLeft') {
+        const focused = document.activeElement;
+        if (focused.tagName === 'SUMMARY') {
+          focused.parentElement.open = false;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
