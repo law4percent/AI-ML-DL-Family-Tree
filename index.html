@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI → ML → Deep Learning Family Tree</title>
+  <title>AI → ML → Deep Learning Family Tree (with Math Backbone)</title>
   <style>
     :root {
       --bg: #0b0f14;
@@ -14,6 +14,7 @@
       --accent-2: #7cf1c8;
       --accent-3: #ff6b9d;
       --accent-4: #ffd93d;
+      --math-accent: #b794f6;
       --ring: rgba(106,165,255,.35);
     }
     * { box-sizing: border-box; }
@@ -28,7 +29,7 @@
       line-height: 1.5;
     }
     .wrap {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 48px auto;
       padding: 0 20px 40px;
     }
@@ -87,10 +88,22 @@
     }
     .tag.hot { background: rgba(255,107,157,.15); border-color: var(--accent-3); color: var(--accent-3); }
     .tag.emerging { background: rgba(255,217,61,.15); border-color: var(--accent-4); color: var(--accent-4); }
+    .tag.math { background: rgba(183,148,246,.15); border-color: var(--math-accent); color: var(--math-accent); }
     
     .branch { color: var(--accent-2); font-weight: 600; }
     .model { color: var(--accent); }
     .desc { color: var(--muted); font-size: 14px; margin-left: 28px; margin-bottom: 8px; }
+    .math-desc { 
+      color: var(--math-accent); 
+      font-size: 14px; 
+      margin-left: 28px; 
+      margin-bottom: 8px; 
+      font-family: 'Courier New', monospace;
+      background: rgba(183,148,246,.08);
+      padding: 8px;
+      border-radius: 6px;
+      border-left: 3px solid var(--math-accent);
+    }
 
     .legend { display:flex; gap:12px; flex-wrap:wrap; margin:10px 0 16px; }
     .pill{padding:4px 10px;border-radius:999px;border:1px solid rgba(157,176,199,.25);color:var(--muted);font-size:12px}
@@ -102,10 +115,11 @@
     ul { margin: 8px 0; padding-left: 20px; }
     li { margin: 3px 0; }
     li.model { color: var(--accent); }
+    li.math-concept { color: var(--math-accent); font-style: italic; }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 12px;
       margin: 16px 0;
       padding: 16px;
@@ -127,17 +141,37 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
+
+    .math-formula {
+      background: rgba(183,148,246,.1);
+      border: 1px solid rgba(183,148,246,.3);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 8px 0;
+      font-family: 'Courier New', monospace;
+      color: var(--math-accent);
+      font-size: 13px;
+      overflow-x: auto;
+    }
+
+    .backbone-section {
+      background: linear-gradient(135deg, rgba(183,148,246,.08), rgba(183,148,246,.03));
+      border: 1px solid rgba(183,148,246,.2);
+      border-radius: 12px;
+      margin: 16px 0;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>AI → Machine Learning → Deep Learning — Family Tree</h1>
-      <p class="lead">Comprehensive, expandable tree mapping the AI ecosystem from foundational concepts to cutting-edge model families and applications.</p>
+      <h1>AI → Machine Learning → Deep Learning — Family Tree (with Mathematical Backbone)</h1>
+      <p class="lead">Comprehensive family tree mapping the AI ecosystem with its underlying mathematical foundations, from core concepts to cutting-edge models.</p>
       <div class="legend">
         <span class="pill">🌿 Branch = domain (NLP, CV, robotics, etc.)</span>
         <span class="pill">🔷 Family = related model line</span>
         <span class="pill">✨ Model = concrete checkpoint/version</span>
+        <span class="pill" style="background: rgba(183,148,246,.15); border-color: #b794f6; color: #b794f6;">📐 Math = mathematical foundation</span>
         <span class="pill" style="background: rgba(255,107,157,.15); border-color: #ff6b9d; color: #ff6b9d;">🔥 Hot = trending/breakthrough</span>
         <span class="pill" style="background: rgba(255,217,61,.15); border-color: #ffd93d; color: #ffd93d;">⚡ Emerging = cutting-edge research</span>
       </div>
@@ -153,6 +187,10 @@
         <div class="stat-label">Individual Models</div>
       </div>
       <div class="stat-item">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Math Concepts</div>
+      </div>
+      <div class="stat-item">
         <div class="stat-number">12</div>
         <div class="stat-label">AI Domains</div>
       </div>
@@ -162,6 +200,188 @@
       </div>
     </div>
 
+    <section class="card backbone-section">
+      <details open>
+        <summary><span class="branch">📐 Mathematical Foundations & Backbone</span> <span class="tag math">core theory</span></summary>
+        <div class="desc">The mathematical bedrock that underlies all AI systems - from classical statistics to modern deep learning theory.</div>
+        
+        <details>
+          <summary><span class="branch">Linear Algebra</span> <span class="tag math">vectors & matrices</span></summary>
+          <div class="math-desc">Foundation of all neural network computations, transformations, and data representations.</div>
+          <ul>
+            <li class="math-concept">Vector Spaces & Linear Transformations</li>
+            <li class="math-concept">Matrix Multiplication & Decomposition (SVD, LU, QR)</li>
+            <li class="math-concept">Eigenvalues & Eigenvectors</li>
+            <li class="math-concept">Principal Component Analysis (PCA)</li>
+            <li class="math-concept">Tensor Operations (multi-dimensional arrays)</li>
+          </ul>
+          <div class="math-formula">
+            Matrix multiplication: C = AB where C[i,j] = Σ(k) A[i,k] * B[k,j]<br>
+            Neural layer: y = σ(Wx + b) where W=weights, x=input, b=bias, σ=activation
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Calculus & Optimization</span> <span class="tag math">learning algorithms</span></summary>
+          <div class="math-desc">Drives gradient-based learning, backpropagation, and parameter optimization in neural networks.</div>
+          <ul>
+            <li class="math-concept">Partial Derivatives & Gradients</li>
+            <li class="math-concept">Chain Rule (backpropagation foundation)</li>
+            <li class="math-concept">Gradient Descent & Variants (SGD, Adam, AdaGrad)</li>
+            <li class="math-concept">Lagrange Multipliers (constrained optimization)</li>
+            <li class="math-concept">Convex Optimization</li>
+            <li class="math-concept">Automatic Differentiation</li>
+          </ul>
+          <div class="math-formula">
+            Gradient Descent: θ(t+1) = θ(t) - α∇J(θ)<br>
+            Backprop: ∂L/∂w = ∂L/∂y * ∂y/∂w (chain rule)<br>
+            Adam: m(t) = β₁m(t-1) + (1-β₁)g(t), v(t) = β₂v(t-1) + (1-β₂)g(t)²
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Probability & Statistics</span> <span class="tag math">uncertainty & learning</span></summary>
+          <div class="math-desc">Handles uncertainty, enables Bayesian learning, and provides theoretical foundations for many ML algorithms.</div>
+          <ul>
+            <li class="math-concept">Bayes' Theorem & Bayesian Inference</li>
+            <li class="math-concept">Probability Distributions (Gaussian, Bernoulli, Categorical)</li>
+            <li class="math-concept">Maximum Likelihood Estimation (MLE)</li>
+            <li class="math-concept">Maximum A Posteriori (MAP) Estimation</li>
+            <li class="math-concept">Central Limit Theorem</li>
+            <li class="math-concept">Monte Carlo Methods</li>
+            <li class="math-concept">Markov Chains & Stochastic Processes</li>
+          </ul>
+          <div class="math-formula">
+            Bayes: P(A|B) = P(B|A)P(A) / P(B)<br>
+            MLE: θ* = argmax Π P(x_i|θ)<br>
+            Cross-entropy loss: L = -Σ y_i log(ŷ_i)
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Information Theory</span> <span class="tag math">entropy & compression</span></summary>
+          <div class="math-desc">Quantifies information content, drives attention mechanisms, and enables efficient model architectures.</div>
+          <ul>
+            <li class="math-concept">Entropy & Mutual Information</li>
+            <li class="math-concept">Kullback-Leibler (KL) Divergence</li>
+            <li class="math-concept">Cross-Entropy & Log-Likelihood</li>
+            <li class="math-concept">Data Compression & Coding Theory</li>
+            <li class="math-concept">Channel Capacity</li>
+          </ul>
+          <div class="math-formula">
+            Entropy: H(X) = -Σ P(x)log P(x)<br>
+            KL Divergence: D_KL(P||Q) = Σ P(x)log(P(x)/Q(x))<br>
+            Attention: Attention(Q,K,V) = softmax(QK^T/√d_k)V
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Graph Theory & Discrete Math</span> <span class="tag math">structure & logic</span></summary>
+          <div class="math-desc">Powers graph neural networks, combinatorial optimization, and symbolic AI reasoning systems.</div>
+          <ul>
+            <li class="math-concept">Graph Algorithms (BFS, DFS, Shortest Path)</li>
+            <li class="math-concept">Adjacency Matrices & Laplacian</li>
+            <li class="math-concept">Spectral Graph Theory</li>
+            <li class="math-concept">Boolean Logic & Satisfiability</li>
+            <li class="math-concept">Combinatorial Optimization</li>
+            <li class="math-concept">Message Passing Algorithms</li>
+          </ul>
+          <div class="math-formula">
+            GCN Layer: H^(l+1) = σ(D^(-1/2)AD^(-1/2)H^(l)W^(l))<br>
+            Message Passing: h_v^(t+1) = UPDATE(h_v^(t), AGGREGATE({h_u^(t): u ∈ N(v)}))
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Functional Analysis & Kernel Methods</span> <span class="tag math">infinite dimensions</span></summary>
+          <div class="math-desc">Provides theoretical foundations for SVMs, Gaussian processes, and function approximation theory.</div>
+          <ul>
+            <li class="math-concept">Reproducing Kernel Hilbert Spaces (RKHS)</li>
+            <li class="math-concept">Kernel Trick & Kernel Functions</li>
+            <li class="math-concept">Universal Approximation Theorem</li>
+            <li class="math-concept">Fourier Analysis & Transforms</li>
+            <li class="math-concept">Wavelets & Multi-resolution Analysis</li>
+          </ul>
+          <div class="math-formula">
+            Kernel SVM: f(x) = Σ α_i y_i K(x_i, x) + b<br>
+            RBF Kernel: K(x,x') = exp(-||x-x'||²/2σ²)<br>
+            Neural Tangent Kernel: K_NTK(x,x') = E[∇f(x;θ)·∇f(x';θ)]
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Numerical Methods & Computational Math</span> <span class="tag math">efficient computation</span></summary>
+          <div class="math-desc">Enables fast, stable computation in high-dimensional spaces with finite precision arithmetic.</div>
+          <ul>
+            <li class="math-concept">Numerical Stability & Conditioning</li>
+            <li class="math-concept">Fast Fourier Transform (FFT)</li>
+            <li class="math-concept">Iterative Methods (Conjugate Gradient)</li>
+            <li class="math-concept">Approximation Theory</li>
+            <li class="math-concept">Finite Difference & Finite Element Methods</li>
+            <li class="math-concept">Parallel & Distributed Algorithms</li>
+          </ul>
+          <div class="math-formula">
+            Numerical stability: condition number κ(A) = ||A|| ||A^(-1)||<br>
+            FFT: O(n log n) instead of O(n²) for DFT<br>
+            BatchNorm: y = γ(x-μ)/σ + β (normalize then scale/shift)
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Topology & Manifold Learning</span> <span class="tag math">shape of data</span></summary>
+          <div class="math-desc">Understanding the geometric structure of high-dimensional data and latent spaces in deep learning.</div>
+          <ul>
+            <li class="math-concept">Manifold Theory & Embeddings</li>
+            <li class="math-concept">Riemannian Geometry</li>
+            <li class="math-concept">Persistent Homology</li>
+            <li class="math-concept">Dimensionality Reduction (t-SNE, UMAP)</li>
+            <li class="math-concept">Geometric Deep Learning</li>
+          </ul>
+          <div class="math-formula">
+            t-SNE: P(j|i) = exp(-||x_i-x_j||²/2σ_i²) / Σ exp(-||x_i-x_k||²/2σ_i²)<br>
+            Manifold assumption: high-dim data lies on low-dim manifold
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Game Theory & Decision Theory</span> <span class="tag math">strategic learning</span></summary>
+          <div class="math-desc">Foundation for multi-agent systems, GANs, reinforcement learning, and AI safety research.</div>
+          <ul>
+            <li class="math-concept">Nash Equilibrium & Game Solutions</li>
+            <li class="math-concept">Minimax & Zero-sum Games</li>
+            <li class="math-concept">Mechanism Design</li>
+            <li class="math-concept">Auction Theory</li>
+            <li class="math-concept">Markov Decision Processes (MDPs)</li>
+            <li class="math-concept">Multi-Agent Reinforcement Learning</li>
+          </ul>
+          <div class="math-formula">
+            Minimax: min_θ max_φ V(θ,φ) (GANs)<br>
+            Bellman: V(s) = max_a Σ P(s'|s,a)[R(s,a,s') + γV(s')]<br>
+            Nash: strategies where no player benefits from unilateral change
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Measure Theory & Advanced Probability</span> <span class="tag math">rigorous foundations</span></summary>
+          <div class="math-desc">Provides rigorous mathematical foundations for probability theory, stochastic processes, and learning theory.</div>
+          <ul>
+            <li class="math-concept">σ-algebras & Measure Spaces</li>
+            <li class="math-concept">Lebesgue Integration</li>
+            <li class="math-concept">Martingales & Stopping Times</li>
+            <li class="math-concept">Concentration Inequalities</li>
+            <li class="math-concept">PAC Learning Theory</li>
+            <li class="math-concept">VC Dimension & Generalization Bounds</li>
+          </ul>
+          <div class="math-formula">
+            Hoeffding: P(|S_n - E[S_n]| ≥ t) ≤ 2exp(-2t²/n)<br>
+            PAC: P(error ≤ ε) ≥ 1-δ with sufficient samples<br>
+            VC bound: generalization error ≤ empirical error + complexity term
+          </div>
+        </details>
+
+      </details>
+    </section>
+
     <section class="card">
       <details open>
         <summary><span class="branch">Artificial Intelligence (AI)</span> <span class="tag">umbrella field</span></summary>
@@ -170,12 +390,14 @@
         <details>
           <summary><span class="branch">Symbolic AI / Expert Systems</span> <span class="tag">rule-based</span></summary>
           <div class="desc">Knowledge representation, logic programming, and rule-based reasoning systems.</div>
+          <div class="math-desc">Based on formal logic: propositional & predicate calculus, model theory, proof systems</div>
           <details>
             <summary>🔷 Knowledge Graphs</summary>
             <ul>
               <li class="model">Neo4j Graph Database</li>
               <li class="model">Cypher Query Language</li>
               <li class="model">Google Knowledge Graph</li>
+              <li class="math-concept">Graph traversal algorithms, RDF triples</li>
             </ul>
           </details>
           <details>
@@ -183,6 +405,7 @@
             <ul>
               <li class="model">Prolog</li>
               <li class="model">Answer Set Programming (ASP)</li>
+              <li class="math-concept">Horn clauses, unification, resolution theorem proving</li>
             </ul>
           </details>
         </details>
@@ -195,29 +418,44 @@
             <summary><span class="branch">Classical Machine Learning</span> <span class="tag">traditional algorithms</span></summary>
             <details>
               <summary>🔷 Supervised Learning</summary>
+              <div class="math-desc">Optimization of loss functions via gradient methods, closed-form solutions</div>
               <ul>
                 <li class="model">Linear/Logistic Regression</li>
+                <li class="math-concept">Ordinary least squares: β = (X^T X)^(-1) X^T y</li>
                 <li class="model">Support Vector Machines (SVM)</li>
+                <li class="math-concept">Quadratic programming, kernel methods, margin maximization</li>
                 <li class="model">Random Forest</li>
+                <li class="math-concept">Bootstrap aggregating, information gain, Gini impurity</li>
                 <li class="model">XGBoost / LightGBM</li>
+                <li class="math-concept">Gradient boosting, second-order Taylor approximation</li>
                 <li class="model">Naive Bayes</li>
+                <li class="math-concept">Conditional independence assumption, Bayes' theorem</li>
               </ul>
             </details>
             <details>
               <summary>🔷 Unsupervised Learning</summary>
+              <div class="math-desc">Eigenvalue decomposition, clustering metrics, density estimation</div>
               <ul>
                 <li class="model">K-Means Clustering</li>
+                <li class="math-concept">Lloyd's algorithm, within-cluster sum of squares minimization</li>
                 <li class="model">DBSCAN</li>
+                <li class="math-concept">Density-based clustering, ε-neighborhoods</li>
                 <li class="model">Principal Component Analysis (PCA)</li>
+                <li class="math-concept">Eigendecomposition of covariance matrix, dimensionality reduction</li>
                 <li class="model">t-SNE / UMAP</li>
+                <li class="math-concept">Non-linear manifold learning, probabilistic embeddings</li>
               </ul>
             </details>
             <details>
               <summary>🔷 Ensemble Methods</summary>
+              <div class="math-desc">Bias-variance tradeoff, weighted combination of weak learners</div>
               <ul>
                 <li class="model">AdaBoost</li>
+                <li class="math-concept">Exponential loss minimization, weighted voting</li>
                 <li class="model">Gradient Boosting</li>
+                <li class="math-concept">Functional gradient descent in function space</li>
                 <li class="model">Voting Classifiers</li>
+                <li class="math-concept">Majority voting, weighted averaging</li>
               </ul>
             </details>
           </details>
@@ -225,13 +463,16 @@
           <!-- Deep Learning -->
           <details open>
             <summary><span class="branch">Deep Learning (DL)</span> <span class="tag">neural networks</span></summary>
+            <div class="math-desc">Universal function approximation, backpropagation, stochastic gradient descent</div>
 
             <!-- NLP -->
             <details>
               <summary>🌿 <span class="branch">Natural Language Processing (NLP)</span> <span class="tag">text & language</span></summary>
+              <div class="math-desc">Sequence modeling, attention mechanisms, transformer architectures</div>
               <details>
                 <summary>🔷 Large Language Models (LLMs)</summary>
                 <div class="desc">Foundation models trained on massive text corpora for general language understanding and generation.</div>
+                <div class="math-desc">Autoregressive modeling: P(x₁,...,xₙ) = ∏P(xᵢ|x₁,...,xᵢ₋₁), self-attention, layer normalization</div>
                 <details>
                   <summary>GPT Family (OpenAI)</summary>
                   <ul>
@@ -244,6 +485,7 @@
                     <li class="model">GPT‑4o <span class="tag hot">multimodal</span></li>
                     <li class="model">GPT‑4.1 <span class="tag hot">latest</span></li>
                     <li class="model">o1 / o1‑mini <span class="tag hot">reasoning</span></li>
+                    <li class="math-concept">Decoder-only transformer, causal attention masking</li>
                   </ul>
                 </details>
                 <details>
@@ -256,6 +498,7 @@
                     <li class="model">Claude 3 Opus <span class="tag">most capable</span></li>
                     <li class="model">Claude 3.5 Sonnet <span class="tag hot">enhanced</span></li>
                     <li class="model">Claude 4 Sonnet <span class="tag hot">latest</span></li>
+                    <li class="math-concept">Constitutional AI, RLHF training, safety objectives</li>
                   </ul>
                 </details>
                 <details>
@@ -267,6 +510,7 @@
                     <li class="model">Gemini Ultra</li>
                     <li class="model">Gemini 1.5 <span class="tag">long context</span></li>
                     <li class="model">Gemini 2.0 <span class="tag hot">multimodal</span></li>
+                    <li class="math-concept">Mixture of experts (MoE), Pathways architecture</li>
                   </ul>
                 </details>
                 <details>
@@ -277,6 +521,7 @@
                     <li class="model">Code Llama <span class="tag">programming</span></li>
                     <li class="model">LLaMA 3 / 3.1 <span class="tag hot">405B</span></li>
                     <li class="model">LLaMA 3.2 <span class="tag hot">multimodal</span></li>
+                    <li class="math-concept">RMSNorm, SwiGLU activation, rotary positional embeddings</li>
                   </ul>
                 </details>
                 <details>
@@ -289,6 +534,7 @@
                     <li class="model">MPT (MosaicML)</li>
                     <li class="model">Qwen (Alibaba)</li>
                     <li class="model">Yi (01.AI)</li>
+                    <li class="math-concept">Various architectural optimizations, efficiency improvements</li>
                   </ul>
                 </details>
               </details>
@@ -296,33 +542,46 @@
                 <summary>🔷 Specialized NLP Models</summary>
                 <details>
                   <summary>Understanding Models (Encoders)</summary>
+                  <div class="math-desc">Bidirectional attention, masked language modeling objective</div>
                   <ul>
                     <li class="model">BERT / RoBERTa</li>
+                    <li class="math-concept">Masked LM: P(xᵢ|x₋ᵢ), bidirectional transformer</li>
                     <li class="model">DeBERTa</li>
+                    <li class="math-concept">Disentangled attention, enhanced mask decoder</li>
                     <li class="model">ELECTRA</li>
+                    <li class="math-concept">Replaced token detection, generator-discriminator training</li>
                     <li class="model">DistilBERT <span class="tag">compressed</span></li>
+                    <li class="math-concept">Knowledge distillation from teacher to student model</li>
                   </ul>
                 </details>
                 <details>
                   <summary>Text-to-Text Models</summary>
+                  <div class="math-desc">Encoder-decoder architecture, span denoising objectives</div>
                   <ul>
                     <li class="model">T5 / UL2</li>
+                    <li class="math-concept">Text-to-text unified framework, span corruption</li>
                     <li class="model">BART</li>
+                    <li class="math-concept">Denoising autoencoder, various noise functions</li>
                     <li class="model">Pegasus <span class="tag">summarization</span></li>
+                    <li class="math-concept">Gap sentence generation pre-training</li>
                   </ul>
                 </details>
                 <details>
                   <summary>Embedding Models</summary>
+                  <div class="math-desc">Contrastive learning, cosine similarity, semantic vector spaces</div>
                   <ul>
                     <li class="model">Sentence-BERT</li>
+                    <li class="math-concept">Siamese networks, triplet loss</li>
                     <li class="model">OpenAI text-embedding-ada-002</li>
                     <li class="model">E5 / BGE</li>
                     <li class="model">Instructor <span class="tag">task-specific</span></li>
+                    <li class="math-concept">Task-aware embeddings, instruction following</li>
                   </ul>
                 </details>
               </details>
               <details>
                 <summary>🔷 Code Generation Models</summary>
+                <div class="math-desc">Programming language modeling, syntax-aware attention</div>
                 <ul>
                   <li class="model">GitHub Copilot (OpenAI Codex)</li>
                   <li class="model">CodeT5 / CodeGen</li>
@@ -330,6 +589,7 @@
                   <li class="model">Replit Code v1.5</li>
                   <li class="model">Amazon CodeWhisperer</li>
                   <li class="model">Tabnine</li>
+                  <li class="math-concept">Abstract syntax tree (AST) modeling, code completion probability</li>
                 </ul>
               </details>
             </details>
@@ -337,8 +597,10 @@
             <!-- Computer Vision -->
             <details>
               <summary>🌿 <span class="branch">Computer Vision (CV)</span> <span class="tag">images & video</span></summary>
+              <div class="math-desc">Convolutional operations, spatial hierarchies, visual feature learning</div>
               <details>
                 <summary>🔷 Object Detection & Segmentation</summary>
+                <div class="math-desc">Non-maximum suppression, intersection over union (IoU), anchor-based/anchor-free methods</div>
                 <details>
                   <summary>YOLO Family</summary>
                   <ul>
@@ -347,6 +609,7 @@
                     <li class="model">YOLOX / YOLOv6</li>
                     <li class="model">YOLOv8 <span class="tag">ultralytics</span></li>
                     <li class="model">YOLO11 <span class="tag hot">latest</span></li>
+                    <li class="math-concept">Grid-based detection, confidence × class probability</li>
                   </ul>
                 </details>
                 <details>
@@ -356,6 +619,7 @@
                     <li class="model">Fast R-CNN</li>
                     <li class="model">Faster R-CNN</li>
                     <li class="model">Mask R-CNN <span class="tag">segmentation</span></li>
+                    <li class="math-concept">Region proposal networks, ROI pooling/align</li>
                   </ul>
                 </details>
                 <details>
@@ -363,32 +627,46 @@
                   <ul>
                     <li class="model">SSD (Single Shot Detector)</li>
                     <li class="model">RetinaNet</li>
+                    <li class="math-concept">Focal loss for class imbalance</li>
                     <li class="model">DETR (Detection Transformer)</li>
+                    <li class="math-concept">Set prediction, Hungarian matching algorithm</li>
                     <li class="model">EfficientDet</li>
+                    <li class="math-concept">Compound scaling, BiFPN architecture</li>
                   </ul>
                 </details>
               </details>
               <details>
                 <summary>🔷 Image Classification & Backbones</summary>
+                <div class="math-desc">Hierarchical feature extraction, skip connections, batch normalization</div>
                 <details>
                   <summary>Convolutional Networks</summary>
                   <ul>
                     <li class="model">LeNet / AlexNet <span class="tag">historical</span></li>
+                    <li class="math-concept">Convolution: (f*g)[n] = Σf[m]g[n-m]</li>
                     <li class="model">VGG-16 / VGG-19</li>
+                    <li class="math-concept">Small 3×3 filters, depth over width</li>
                     <li class="model">ResNet (18/34/50/101/152)</li>
+                    <li class="math-concept">Residual connections: F(x) + x, gradient highway</li>
                     <li class="model">ResNeXt / Wide ResNet</li>
                     <li class="model">DenseNet</li>
+                    <li class="math-concept">Dense connections, feature reuse</li>
                     <li class="model">EfficientNet v1/v2</li>
+                    <li class="math-concept">Neural architecture search, compound scaling</li>
                     <li class="model">RegNet</li>
                   </ul>
                 </details>
                 <details>
                   <summary>Vision Transformers</summary>
+                  <div class="math-desc">Patch embeddings, positional encoding, self-attention for vision</div>
                   <ul>
                     <li class="model">Vision Transformer (ViT)</li>
+                    <li class="math-concept">Image patches as tokens, position embeddings</li>
                     <li class="model">DeiT (Data-efficient ViT)</li>
+                    <li class="math-concept">Distillation token, teacher-student training</li>
                     <li class="model">Swin Transformer</li>
+                    <li class="math-concept">Shifted windows, hierarchical feature maps</li>
                     <li class="model">ConvNeXt <span class="tag">modernized ConvNet</span></li>
+                    <li class="math-concept">ConvNet with transformer design principles</li>
                     <li class="model">MaxViT</li>
                   </ul>
                 </details>
@@ -397,8 +675,10 @@
                 <summary>🔷 Image Generation</summary>
                 <details>
                   <summary>Diffusion Models</summary>
+                  <div class="math-desc">Forward/reverse diffusion processes, denoising score matching</div>
                   <ul>
                     <li class="model">DDPM / DDIM</li>
+                    <li class="math-concept">q(x_t|x₀) = N(√α̅_t x₀, (1-α̅_t)I), reverse process</li>
                     <li class="model">Stable Diffusion 1.5 / 2.0</li>
                     <li class="model">Stable Diffusion XL (SDXL)</li>
                     <li class="model">Stable Diffusion 3 <span class="tag hot">latest</span></li>
@@ -406,24 +686,31 @@
                     <li class="model">Midjourney v5 / v6</li>
                     <li class="model">Imagen (Google)</li>
                     <li class="model">Adobe Firefly</li>
+                    <li class="math-concept">Latent space diffusion, CLIP guidance, classifier-free guidance</li>
                   </ul>
                 </details>
                 <details>
                   <summary>GANs & Other Generative</summary>
+                  <div class="math-desc">Minimax game theory, adversarial training, Nash equilibrium</div>
                   <ul>
                     <li class="model">StyleGAN 2/3</li>
+                    <li class="math-concept">Style injection, AdaIN normalization</li>
                     <li class="model">BigGAN</li>
                     <li class="model">VQ-VAE / VQ-GAN</li>
+                    <li class="math-concept">Vector quantization, codebook learning</li>
                     <li class="model">Parti (Google)</li>
                   </ul>
                 </details>
               </details>
               <details>
                 <summary>🔷 Video Understanding</summary>
+                <div class="math-desc">Spatio-temporal convolutions, temporal modeling, motion estimation</div>
                 <ul>
                   <li class="model">Video Swin Transformer</li>
                   <li class="model">TimeSformer</li>
+                  <li class="math-concept">Divided space-time attention</li>
                   <li class="model">SlowFast Networks</li>
+                  <li class="math-concept">Dual pathway: slow (spatial) + fast (temporal)</li>
                   <li class="model">I3D (Inflated 3D ConvNet)</li>
                   <li class="model">OpenAI Sora <span class="tag hot">video generation</span></li>
                   <li class="model">Runway Gen-2</li>
@@ -435,23 +722,33 @@
             <!-- Speech / Audio -->
             <details>
               <summary>🌿 <span class="branch">Speech & Audio AI</span> <span class="tag">sound processing</span></summary>
+              <div class="math-desc">Signal processing, spectrograms, mel-frequency cepstral coefficients (MFCC)</div>
               <details>
                 <summary>🔷 Speech Recognition (ASR)</summary>
+                <div class="math-desc">Hidden Markov models, connectionist temporal classification (CTC)</div>
                 <ul>
                   <li class="model">Whisper (OpenAI) <span class="tag hot">multilingual</span></li>
+                  <li class="math-concept">Sequence-to-sequence with attention</li>
                   <li class="model">Wav2Vec 2.0 (Meta)</li>
+                  <li class="math-concept">Contrastive learning on raw audio waveforms</li>
                   <li class="model">DeepSpeech (Mozilla)</li>
+                  <li class="math-concept">CTC loss, RNN-based architecture</li>
                   <li class="model">Conformer</li>
+                  <li class="math-concept">Convolution + transformer hybrid</li>
                   <li class="model">Google Speech-to-Text</li>
                   <li class="model">Amazon Transcribe</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Text-to-Speech (TTS)</summary>
+                <div class="math-desc">Vocoder design, mel-spectrogram prediction, neural audio synthesis</div>
                 <ul>
                   <li class="model">Tacotron 2</li>
+                  <li class="math-concept">Encoder-decoder with attention, mel-spectrogram prediction</li>
                   <li class="model">WaveNet / WaveGlow</li>
+                  <li class="math-concept">Dilated causal convolutions, autoregressive generation</li>
                   <li class="model">VITS (End-to-end TTS)</li>
+                  <li class="math-concept">Variational inference, normalizing flows</li>
                   <li class="model">Bark (Suno AI) <span class="tag">expressive</span></li>
                   <li class="model">ElevenLabs <span class="tag hot">commercial</span></li>
                   <li class="model">Tortoise TTS</li>
@@ -459,11 +756,13 @@
               </details>
               <details>
                 <summary>🔷 Music & Audio Generation</summary>
+                <div class="math-desc">Audio synthesis, harmonic analysis, rhythm modeling</div>
                 <ul>
                   <li class="model">MusicLM (Google)</li>
                   <li class="model">Suno AI <span class="tag hot">commercial</span></li>
                   <li class="model">Udio <span class="tag hot">commercial</span></li>
                   <li class="model">Jukebox (OpenAI)</li>
+                  <li class="math-concept">VQ-VAE hierarchical modeling</li>
                   <li class="model">AudioCraft (Meta)</li>
                   <li class="model">MusiCNN</li>
                 </ul>
@@ -474,6 +773,7 @@
                   <li class="model">PANNs (Audio Tagging)</li>
                   <li class="model">YAMNet (Audio Event Detection)</li>
                   <li class="model">AudioMAE</li>
+                  <li class="math-concept">Masked autoencoding for audio spectrograms</li>
                 </ul>
               </details>
             </details>
@@ -481,26 +781,34 @@
             <!-- Multimodal -->
             <details>
               <summary>🌿 <span class="branch">Multimodal AI</span> <span class="tag hot">text + image + audio + video</span></summary>
+              <div class="math-desc">Cross-modal attention, contrastive learning, unified embedding spaces</div>
               <details>
                 <summary>🔷 Vision-Language Models</summary>
+                <div class="math-desc">Cross-attention between visual and textual features</div>
                 <ul>
                   <li class="model">GPT‑4o / GPT‑4‑vision <span class="tag hot">OpenAI</span></li>
                   <li class="model">Claude 3 Opus/Sonnet (vision)</li>
                   <li class="model">Gemini Pro Vision / Ultra</li>
                   <li class="model">LLaVA (Large Language and Vision)</li>
+                  <li class="math-concept">Visual instruction tuning, cross-modal alignment</li>
                   <li class="model">BLIP / BLIP-2</li>
+                  <li class="math-concept">Bootstrap vision-language pre-training</li>
                   <li class="model">Flamingo (DeepMind)</li>
+                  <li class="math-concept">Few-shot learning with frozen language models</li>
                   <li class="model">Kosmos‑1/2 (Microsoft)</li>
                   <li class="model">Qwen-VL</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 CLIP & Embedding Models</summary>
+                <div class="math-desc">Contrastive learning: maximize similarity of correct pairs, minimize incorrect pairs</div>
                 <ul>
                   <li class="model">CLIP (OpenAI)</li>
+                  <li class="math-concept">Contrastive loss: L = -log(exp(sim(x,y)/τ) / Σexp(sim(x,y')/τ))</li>
                   <li class="model">ALIGN (Google)</li>
                   <li class="model">CoCa (Contrastive Captioners)</li>
                   <li class="model">SigLIP</li>
+                  <li class="math-concept">Sigmoid loss instead of softmax for efficiency</li>
                 </ul>
               </details>
               <details>
@@ -509,6 +817,7 @@
                   <li class="model">GPT-4o <span class="tag hot">text→image→text</span></li>
                   <li class="model">Gemini 2.0 <span class="tag hot">comprehensive</span></li>
                   <li class="model">Any-to-Any (Meta) <span class="tag emerging">research</span></li>
+                  <li class="math-concept">Unified tokenization across modalities</li>
                 </ul>
               </details>
             </details>
@@ -516,30 +825,38 @@
             <!-- Robotics -->
             <details>
               <summary>🌿 <span class="branch">Robotics & Embodied AI</span> <span class="tag">physical world</span></summary>
+              <div class="math-desc">Control theory, kinematics, dynamics, trajectory optimization</div>
               <details>
                 <summary>🔷 Manipulation & Control</summary>
+                <div class="math-desc">Inverse kinematics, PID control, Model Predictive Control (MPC)</div>
                 <ul>
                   <li class="model">RT-1 / RT-2 (Google)</li>
+                  <li class="math-concept">Transformer for robotics, vision-language-action</li>
                   <li class="model">PaLM-E <span class="tag">language + robotics</span></li>
                   <li class="model">RoboCat (DeepMind)</li>
                   <li class="model">OpenVLA <span class="tag emerging">vision-language-action</span></li>
                   <li class="model">SARA (Stanford)</li>
+                  <li class="math-concept">Spatial action representations</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Simulation & Training</summary>
+                <div class="math-desc">Physics simulation, contact dynamics, domain randomization</div>
                 <ul>
                   <li class="model">Isaac Gym (NVIDIA)</li>
                   <li class="model">MuJoCo</li>
+                  <li class="math-concept">Multi-joint dynamics with contact</li>
                   <li class="model">PyBullet</li>
                   <li class="model">Habitat (Meta)</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Navigation & SLAM</summary>
+                <div class="math-desc">Simultaneous Localization and Mapping, particle filters, graph optimization</div>
                 <ul>
                   <li class="model">Neural SLAM</li>
                   <li class="model">PointNet++</li>
+                  <li class="math-concept">Hierarchical point set feature learning</li>
                   <li class="model">DD-PPO (Distributed RL)</li>
                 </ul>
               </details>
@@ -548,21 +865,28 @@
             <!-- Reinforcement Learning -->
             <details>
               <summary>🌿 <span class="branch">Reinforcement Learning (RL)</span> <span class="tag">decision making</span></summary>
+              <div class="math-desc">Markov Decision Processes, Bellman equations, policy gradients, temporal difference learning</div>
               <details>
                 <summary>🔷 Game Playing</summary>
+                <div class="math-desc">Monte Carlo Tree Search, value/policy networks, self-play</div>
                 <ul>
                   <li class="model">AlphaGo / AlphaZero</li>
+                  <li class="math-concept">MCTS + neural networks, UCB1 selection</li>
                   <li class="model">MuZero</li>
+                  <li class="math-concept">Model-based planning with learned dynamics</li>
                   <li class="model">OpenAI Five (Dota 2)</li>
                   <li class="model">AlphaStar (StarCraft II)</li>
                   <li class="model">Agent57 (Atari)</li>
+                  <li class="math-concept">Meta-controller for exploration vs exploitation</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 RLHF & Alignment</summary>
                 <div class="desc">Human feedback training for AI alignment and safety.</div>
+                <div class="math-desc">Preference modeling, reward learning from comparisons, KL regularization</div>
                 <ul>
                   <li class="model">InstructGPT (OpenAI)</li>
+                  <li class="math-concept">PPO with KL penalty: J = E[r(x,y)] - β KL(π,π_ref)</li>
                   <li class="model">Constitutional AI (Anthropic)</li>
                   <li class="model">Sparrow (DeepMind)</li>
                   <li class="model">LaMDA Safety Training</li>
@@ -570,34 +894,49 @@
               </details>
               <details>
                 <summary>🔷 Policy Learning</summary>
+                <div class="math-desc">Policy gradient methods, actor-critic algorithms, experience replay</div>
                 <ul>
                   <li class="model">PPO (Proximal Policy Optimization)</li>
+                  <li class="math-concept">Clipped surrogate objective, trust region</li>
                   <li class="model">SAC (Soft Actor-Critic)</li>
+                  <li class="math-concept">Maximum entropy RL, entropy regularization</li>
                   <li class="model">Rainbow DQN</li>
+                  <li class="math-concept">Combines 6 DQN improvements</li>
                   <li class="model">IMPALA</li>
                 </ul>
               </details>
             </details>
 
-            <!-- Recommendation Systems -->
+            <!-- Continue with remaining sections... -->
             <details>
               <summary>🌿 <span class="branch">Recommendation Systems</span> <span class="tag">personalization</span></summary>
+              <div class="math-desc">Collaborative filtering, matrix factorization, embedding learning</div>
               <details>
                 <summary>🔷 Deep Recommenders</summary>
+                <div class="math-desc">Neural collaborative filtering, factorization machines, deep CTR prediction</div>
                 <ul>
                   <li class="model">Neural Collaborative Filtering</li>
+                  <li class="math-concept">Replace inner product with neural networks</li>
                   <li class="model">Wide & Deep (Google)</li>
+                  <li class="math-concept">Memorization (wide) + generalization (deep)</li>
                   <li class="model">DeepFM</li>
+                  <li class="math-concept">Factorization machines + deep neural networks</li>
                   <li class="model">DIN / DIEN (Alibaba)</li>
+                  <li class="math-concept">Attention-based user interest modeling</li>
                   <li class="model">PinSage (Pinterest)</li>
+                  <li class="math-concept">Graph convolutional networks for recommendations</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Sequential Recommendations</summary>
+                <div class="math-desc">Sequence modeling, temporal dynamics, session-based recommendations</div>
                 <ul>
                   <li class="model">SASRec (Self-Attention)</li>
+                  <li class="math-concept">Self-attention for sequential patterns</li>
                   <li class="model">BERT4Rec</li>
+                  <li class="math-concept">Bidirectional encoder for user sequences</li>
                   <li class="model">GRU4Rec</li>
+                  <li class="math-concept">RNN for session-based recommendations</li>
                 </ul>
               </details>
             </details>
@@ -605,21 +944,28 @@
             <!-- Drug Discovery & Science -->
             <details>
               <summary>🌿 <span class="branch">AI for Science & Drug Discovery</span> <span class="tag emerging">scientific AI</span></summary>
+              <div class="math-desc">Molecular dynamics, protein folding energy landscapes, sequence-structure relationships</div>
               <details>
                 <summary>🔷 Protein Folding & Structure</summary>
+                <div class="math-desc">Energy minimization, Ramachandran plots, contact prediction, attention over residue pairs</div>
                 <ul>
                   <li class="model">AlphaFold 2/3 (DeepMind) <span class="tag hot">breakthrough</span></li>
+                  <li class="math-concept">MSA processing, attention over residue pairs, distance/angle prediction</li>
                   <li class="model">ESMFold (Meta)</li>
+                  <li class="math-concept">Language model embeddings for folding</li>
                   <li class="model">ChimeraX AlphaFold</li>
                   <li class="model">ColabFold</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Drug Discovery</summary>
+                <div class="math-desc">Molecular representations, SMILES encoding, molecular property prediction</div>
                 <ul>
                   <li class="model">AlphaFold DB</li>
                   <li class="model">MolGAN</li>
+                  <li class="math-concept">GANs for molecular generation</li>
                   <li class="model">Junction Tree VAE</li>
+                  <li class="math-concept">Tree-structured molecular representations</li>
                   <li class="model">ChemBERTa</li>
                   <li class="model">MegaMolBART</li>
                 </ul>
@@ -628,7 +974,9 @@
                 <summary>🔷 Materials Science</summary>
                 <ul>
                   <li class="model">Crystal Graph Neural Networks</li>
+                  <li class="math-concept">Crystal structure as graphs, material property prediction</li>
                   <li class="model">SchNet</li>
+                  <li class="math-concept">Continuous-filter convolutional networks</li>
                   <li class="model">Materials Project ML</li>
                 </ul>
               </details>
@@ -637,10 +985,13 @@
             <!-- Autonomous Systems -->
             <details>
               <summary>🌿 <span class="branch">Autonomous Systems</span> <span class="tag">self-driving</span></summary>
+              <div class="math-desc">Sensor fusion, localization, path planning, control theory</div>
               <details>
                 <summary>🔷 Self-Driving Cars</summary>
+                <div class="math-desc">SLAM, Kalman filtering, trajectory optimization, behavioral planning</div>
                 <ul>
                   <li class="model">Tesla FSD (Full Self-Driving)</li>
+                  <li class="math-concept">Neural network end-to-end driving</li>
                   <li class="model">Waymo Driver</li>
                   <li class="model">Cruise AV</li>
                   <li class="model">Mobileye EyeQ</li>
@@ -649,10 +1000,13 @@
               </details>
               <details>
                 <summary>🔷 Perception Systems</summary>
+                <div class="math-desc">3D object detection, bird's eye view representations, multi-sensor fusion</div>
                 <ul>
                   <li class="model">BEVFormer (Bird's Eye View)</li>
+                  <li class="math-concept">Spatial cross-attention, temporal self-attention</li>
                   <li class="model">DETR3D</li>
                   <li class="model">PointPillars</li>
+                  <li class="math-concept">Point cloud to pseudo-image conversion</li>
                   <li class="model">CenterPoint</li>
                 </ul>
               </details>
@@ -662,6 +1016,7 @@
                   <li class="model">DJI AI Flight Control</li>
                   <li class="model">AirSim (Microsoft)</li>
                   <li class="model">FlightGoggles</li>
+                  <li class="math-concept">Real-time trajectory optimization, collision avoidance</li>
                 </ul>
               </details>
             </details>
@@ -669,22 +1024,33 @@
             <!-- Time Series & Forecasting -->
             <details>
               <summary>🌿 <span class="branch">Time Series & Forecasting</span> <span class="tag">temporal data</span></summary>
+              <div class="math-desc">Autoregressive models, state space models, spectral analysis, trend decomposition</div>
               <details>
                 <summary>🔷 Deep Time Series Models</summary>
+                <div class="math-desc">Recurrent architectures, temporal convolutions, attention over time</div>
                 <ul>
                   <li class="model">LSTM / GRU</li>
+                  <li class="math-concept">Gating mechanisms, forget gates, cell state updates</li>
                   <li class="model">Temporal Convolutional Networks</li>
+                  <li class="math-concept">Dilated convolutions, causal convolutions</li>
                   <li class="model">Transformer for Time Series</li>
+                  <li class="math-concept">Positional encoding for temporal patterns</li>
                   <li class="model">N-BEATS</li>
+                  <li class="math-concept">Neural basis expansion analysis, interpretable forecasting</li>
                   <li class="model">DeepAR (Amazon)</li>
+                  <li class="math-concept">Autoregressive RNN with probabilistic forecasting</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Foundation Models for Forecasting</summary>
+                <div class="math-desc">Pre-trained models on diverse time series, zero-shot forecasting</div>
                 <ul>
                   <li class="model">TimeGPT <span class="tag emerging">Nixtla</span></li>
+                  <li class="math-concept">Transformer pre-trained on 100B+ time series points</li>
                   <li class="model">Chronos (Amazon) <span class="tag emerging">zero-shot</span></li>
+                  <li class="math-concept">Tokenized time series, language model scaling laws</li>
                   <li class="model">ForecastPFN</li>
+                  <li class="math-concept">Prior-data fitted networks, in-context learning</li>
                 </ul>
               </details>
             </details>
@@ -692,14 +1058,21 @@
             <!-- Graph Neural Networks -->
             <details>
               <summary>🌿 <span class="branch">Graph Neural Networks</span> <span class="tag">structured data</span></summary>
+              <div class="math-desc">Message passing, graph convolutions, spectral graph theory, adjacency matrices</div>
               <details>
                 <summary>🔷 Core GNN Architectures</summary>
+                <div class="math-desc">Neighborhood aggregation, permutation invariance, graph isomorphism</div>
                 <ul>
                   <li class="model">Graph Convolutional Networks (GCN)</li>
+                  <li class="math-concept">H^(l+1) = σ(D^(-1/2)AD^(-1/2)H^(l)W^(l)), spectral approach</li>
                   <li class="model">GraphSAGE</li>
+                  <li class="math-concept">Inductive learning, sampling and aggregating</li>
                   <li class="model">Graph Attention Networks (GAT)</li>
+                  <li class="math-concept">Self-attention over graph neighborhoods</li>
                   <li class="model">Graph Transformer</li>
+                  <li class="math-concept">Global attention with positional encodings</li>
                   <li class="model">Message Passing Neural Networks</li>
+                  <li class="math-concept">m_ij = M(h_i, h_j, e_ij), h_i' = U(h_i, Σ m_ij)</li>
                 </ul>
               </details>
               <details>
@@ -709,6 +1082,7 @@
                   <li class="model">Knowledge Graph Reasoning</li>
                   <li class="model">Molecular Property Prediction</li>
                   <li class="model">Traffic Flow Prediction</li>
+                  <li class="math-concept">Spatio-temporal graph modeling</li>
                 </ul>
               </details>
             </details>
@@ -716,33 +1090,97 @@
             <!-- AI Agents -->
             <details>
               <summary>🌿 <span class="branch">AI Agents & Planning</span> <span class="tag hot">autonomous agents</span></summary>
+              <div class="math-desc">Planning algorithms, state space search, multi-agent coordination, game theory</div>
               <details>
                 <summary>🔷 LLM-based Agents</summary>
+                <div class="math-desc">Reasoning chains, tool usage, action space modeling</div>
                 <ul>
                   <li class="model">AutoGPT <span class="tag">autonomous</span></li>
                   <li class="model">LangChain Agents</li>
                   <li class="model">ReAct (Reasoning + Acting)</li>
+                  <li class="math-concept">Thought-action-observation loops</li>
                   <li class="model">Toolformer</li>
+                  <li class="math-concept">Self-supervised tool use learning</li>
                   <li class="model">WebGPT</li>
                   <li class="model">Code Interpreter (OpenAI)</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Multi-Agent Systems</summary>
+                <div class="math-desc">Cooperative game theory, Nash equilibrium, mechanism design</div>
                 <ul>
                   <li class="model">AutoGen (Microsoft) <span class="tag hot">multi-agent</span></li>
                   <li class="model">CrewAI</li>
                   <li class="model">MetaGPT</li>
                   <li class="model">ChatDev</li>
+                  <li class="math-concept">Role assignment, communication protocols</li>
                 </ul>
               </details>
               <details>
+                <summary>🔷 AI Workflow & Automation Platforms</summary>
+                <div class="desc">No-code/low-code platforms for building AI-powered workflows and automations.</div>
+                <div class="math-desc">Directed acyclic graphs (DAGs), workflow orchestration, event-driven systems</div>
+                <details>
+                  <summary>AI-First Platforms</summary>
+                  <ul>
+                    <li class="model">Dify <span class="tag hot">LLM app builder</span></li>
+                    <li class="model">Flowise <span class="tag">drag-and-drop LLM</span></li>
+                    <li class="model">LangFlow <span class="tag">visual LangChain</span></li>
+                    <li class="model">Botpress <span class="tag">conversational AI</span></li>
+                    <li class="model">Rasa <span class="tag">open source chatbot</span></li>
+                    <li class="model">Voiceflow <span class="tag">voice/chat apps</span></li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>General Automation + AI</summary>
+                  <ul>
+                    <li class="model">Make (formerly Integromat) <span class="tag hot">visual automation</span></li>
+                    <li class="model">n8n <span class="tag">open source workflow</span></li>
+                    <li class="model">Zapier <span class="tag">app integration</span></li>
+                    <li class="model">Microsoft Power Automate</li>
+                    <li class="model">IFTTT <span class="tag">simple triggers</span></li>
+                    <li class="model">Activepieces <span class="tag">open source</span></li>
+                    <li class="model">Windmill <span class="tag">developer-first</span></li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>Agent Orchestration</summary>
+                  <ul>
+                    <li class="model">MCP (Model Context Protocol) <span class="tag hot">Anthropic standard</span></li>
+                    <li class="model">OpenAI Assistants API</li>
+                    <li class="model">LangGraph <span class="tag">stateful agents</span></li>
+                    <li class="math-concept">State machines, graph-based agent workflows</li>
+                    <li class="model">Semantic Kernel (Microsoft)</li>
+                    <li class="model">Haystack <span class="tag">deepset</span></li>
+                    <li class="model">Crew AI Studio</li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>Enterprise AI Orchestration</summary>
+                  <ul>
+                    <li class="model">Databricks MLflow</li>
+                    <li class="model">Kubeflow Pipelines</li>
+                    <li class="model">Azure ML Pipelines</li>
+                    <li class="model">AWS Step Functions</li>
+                    <li class="model">Google Cloud Workflows</li>
+                    <li class="model">Prefect <span class="tag">data workflows</span></li>
+                    <li class="model">Airflow <span class="tag">Apache</span></li>
+                    <li class="math-concept">DAG scheduling, dependency management</li>
+                  </ul>
+                </details>
+              </details>
+              <details>
                 <summary>🔷 Planning & Reasoning</summary>
+                <div class="math-desc">Search algorithms, constraint satisfaction, logical inference</div>
                 <ul>
                   <li class="model">Tree of Thoughts</li>
+                  <li class="math-concept">Breadth-first search over reasoning trees</li>
                   <li class="model">Chain-of-Thought Prompting</li>
+                  <li class="math-concept">Step-by-step reasoning decomposition</li>
                   <li class="model">Self-Consistency Decoding</li>
+                  <li class="math-concept">Sample multiple reasoning paths, majority vote</li>
                   <li class="model">Program-aided Language Models</li>
+                  <li class="math-concept">Code generation for numerical reasoning</li>
                 </ul>
               </details>
             </details>
@@ -750,34 +1188,49 @@
             <!-- Generative AI -->
             <details>
               <summary>🌿 <span class="branch">Generative AI Architectures</span> <span class="tag">creation</span></summary>
+              <div class="math-desc">Probabilistic modeling, likelihood maximization, latent variable models</div>
               <details>
                 <summary>🔷 Transformer Architectures</summary>
+                <div class="math-desc">Self-attention: Attention(Q,K,V) = softmax(QK^T/√d_k)V, positional encoding</div>
                 <ul>
                   <li class="model">Vanilla Transformer</li>
+                  <li class="math-concept">Multi-head attention, feed-forward networks</li>
                   <li class="model">GPT (Decoder-only)</li>
+                  <li class="math-concept">Causal masking, autoregressive generation</li>
                   <li class="model">BERT (Encoder-only)</li>
+                  <li class="math-concept">Bidirectional attention, masked language modeling</li>
                   <li class="model">T5 (Encoder-Decoder)</li>
+                  <li class="math-concept">Text-to-text unified framework</li>
                   <li class="model">PaLM (Pathways)</li>
                   <li class="model">Switch Transformer</li>
+                  <li class="math-concept">Mixture of experts routing</li>
                   <li class="model">Mamba <span class="tag emerging">state space</span></li>
+                  <li class="math-concept">Selective state spaces, linear attention alternative</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Diffusion Models</summary>
+                <div class="math-desc">Forward process: q(x_t|x_{t-1}) = N(√(1-β_t)x_{t-1}, β_t I), reverse denoising</div>
                 <ul>
                   <li class="model">DDPM (Denoising Diffusion)</li>
+                  <li class="math-concept">Markov chain diffusion, score matching</li>
                   <li class="model">Stable Diffusion</li>
                   <li class="model">DALL·E 2/3</li>
                   <li class="model">Imagen / Parti</li>
                   <li class="model">ControlNet <span class="tag">controllable generation</span></li>
+                  <li class="math-concept">Conditional generation with spatial controls</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Variational Models</summary>
+                <div class="math-desc">Evidence Lower BOund (ELBO), KL divergence regularization</div>
                 <ul>
                   <li class="model">VAE (Variational Autoencoder)</li>
+                  <li class="math-concept">ELBO = E[log p(x|z)] - KL(q(z|x)||p(z))</li>
                   <li class="model">β-VAE</li>
+                  <li class="math-concept">β-weighted KL term for disentanglement</li>
                   <li class="model">VQ-VAE / VQ-VAE-2</li>
+                  <li class="math-concept">Vector quantization, discrete latent space</li>
                 </ul>
               </details>
             </details>
@@ -785,33 +1238,48 @@
             <!-- AI Safety & Alignment -->
             <details>
               <summary>🌿 <span class="branch">AI Safety & Alignment</span> <span class="tag emerging">responsible AI</span></summary>
+              <div class="math-desc">Robustness optimization, distributional shift, adversarial examples, reward modeling</div>
               <details>
                 <summary>🔷 Alignment Techniques</summary>
+                <div class="math-desc">Human preference modeling, reward learning, value alignment</div>
                 <ul>
                   <li class="model">RLHF (Reinforcement Learning from Human Feedback)</li>
+                  <li class="math-concept">Bradley-Terry preference model, reward model training</li>
                   <li class="model">Constitutional AI (Anthropic)</li>
+                  <li class="math-concept">Self-supervised harmfulness reduction</li>
                   <li class="model">AI Safety via Debate</li>
+                  <li class="math-concept">Two-player zero-sum game for truthfulness</li>
                   <li class="model">Iterated Amplification</li>
                   <li class="model">Red Teaming Methods</li>
+                  <li class="math-concept">Adversarial testing, failure mode discovery</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Interpretability & Explainability</summary>
+                <div class="math-desc">Attribution methods, gradient-based explanations, feature importance</div>
                 <ul>
                   <li class="model">LIME / SHAP</li>
+                  <li class="math-concept">Local linear approximations, Shapley values</li>
                   <li class="model">Attention Visualization</li>
                   <li class="model">Concept Activation Vectors</li>
+                  <li class="math-concept">TCAV: directional derivatives in concept space</li>
                   <li class="model">Mechanistic Interpretability</li>
                   <li class="model">Anthropic's Circuit Analysis</li>
+                  <li class="math-concept">Reverse engineering neural network computations</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Robustness & Security</summary>
+                <div class="math-desc">Adversarial perturbations, certified defenses, distributional robustness</div>
                 <ul>
                   <li class="model">Adversarial Training</li>
+                  <li class="math-concept">Minimax optimization, PGD attacks</li>
                   <li class="model">Certified Defenses</li>
+                  <li class="math-concept">Lipschitz constraints, interval bound propagation</li>
                   <li class="model">Differential Privacy</li>
+                  <li class="math-concept">ε-differential privacy, noise injection</li>
                   <li class="model">Federated Learning</li>
+                  <li class="math-concept">Distributed learning, privacy preservation</li>
                 </ul>
               </details>
             </details>
@@ -819,21 +1287,31 @@
             <!-- Edge AI & Optimization -->
             <details>
               <summary>🌿 <span class="branch">Edge AI & Model Optimization</span> <span class="tag">efficiency</span></summary>
+              <div class="math-desc">Model compression, quantization, pruning, efficient architectures</div>
               <details>
                 <summary>🔷 Model Compression</summary>
+                <div class="math-desc">Singular value decomposition, weight magnitude pruning, entropy-based quantization</div>
                 <ul>
                   <li class="model">Knowledge Distillation</li>
+                  <li class="math-concept">Student mimics teacher: L = αL_CE + (1-α)L_KD</li>
                   <li class="model">Pruning (Magnitude/Structured)</li>
+                  <li class="math-concept">Weight magnitude thresholding, lottery ticket hypothesis</li>
                   <li class="model">Quantization (INT8/INT4)</li>
+                  <li class="math-concept">Uniform/non-uniform quantization, calibration datasets</li>
                   <li class="model">Low-Rank Factorization</li>
+                  <li class="math-concept">Matrix decomposition: W ≈ UV^T</li>
                   <li class="model">LoRA (Low-Rank Adaptation)</li>
+                  <li class="math-concept">W = W₀ + BA, where B∈R^(d×r), A∈R^(r×k)</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Mobile & Edge Models</summary>
+                <div class="math-desc">Depthwise separable convolutions, neural architecture search</div>
                 <ul>
                   <li class="model">MobileNet v1/v2/v3</li>
+                  <li class="math-concept">Depthwise separable convolutions, inverted residuals</li>
                   <li class="model">EfficientNet</li>
+                  <li class="math-concept">Compound scaling: depth/width/resolution</li>
                   <li class="model">TinyBERT</li>
                   <li class="model">DistilBERT</li>
                   <li class="model">TensorFlow Lite</li>
@@ -846,12 +1324,15 @@
             <!-- Specialized Domains -->
             <details>
               <summary>🌿 <span class="branch">Domain-Specific AI</span> <span class="tag">specialized applications</span></summary>
+              <div class="math-desc">Domain adaptation, transfer learning, specialized loss functions</div>
               <details>
                 <summary>🔷 Healthcare & Medical AI</summary>
+                <div class="math-desc">Medical image analysis, diagnostic classification, survival analysis</div>
                 <ul>
                   <li class="model">Med-PaLM (Google)</li>
                   <li class="model">GPT-4 Medical</li>
                   <li class="model">CheXNet (Chest X-ray)</li>
+                  <li class="math-concept">DenseNet for radiological diagnosis</li>
                   <li class="model">DeepMind AlphaFold</li>
                   <li class="model">IBM Watson Health</li>
                   <li class="model">Radiology AI (Various)</li>
@@ -859,12 +1340,16 @@
               </details>
               <details>
                 <summary>🔷 Finance & Trading</summary>
+                <div class="math-desc">Time series forecasting, risk modeling, portfolio optimization</div>
                 <ul>
                   <li class="model">BloombergGPT</li>
                   <li class="model">FinBERT</li>
                   <li class="model">Algorithmic Trading AI</li>
+                  <li class="math-concept">Market microstructure modeling, order flow prediction</li>
                   <li class="model">Risk Management Models</li>
+                  <li class="math-concept">Value at Risk (VaR), Monte Carlo simulations</li>
                   <li class="model">Fraud Detection Systems</li>
+                  <li class="math-concept">Anomaly detection, graph-based fraud networks</li>
                 </ul>
               </details>
               <details>
@@ -874,14 +1359,18 @@
                   <li class="model">Contract Analysis AI</li>
                   <li class="model">Case Law Search</li>
                   <li class="model">Patent Analysis</li>
+                  <li class="math-concept">Legal document similarity, citation networks</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Education & Learning</summary>
+                <div class="math-desc">Adaptive learning, knowledge tracing, educational data mining</div>
                 <ul>
                   <li class="model">Khan Academy AI Tutor</li>
                   <li class="model">Duolingo AI</li>
+                  <li class="math-concept">Spaced repetition algorithms, forgetting curves</li>
                   <li class="model">Adaptive Learning Systems</li>
+                  <li class="math-concept">Bayesian knowledge tracing, item response theory</li>
                   <li class="model">Academic Writing Assistants</li>
                 </ul>
               </details>
@@ -890,42 +1379,57 @@
             <!-- Emerging & Research -->
             <details>
               <summary>🌿 <span class="branch">Emerging AI Research</span> <span class="tag emerging">cutting-edge</span></summary>
+              <div class="math-desc">Scaling laws, emergent capabilities, novel architectures</div>
               <details>
                 <summary>🔷 Foundation Model Research</summary>
+                <div class="math-desc">Scaling laws: L(N) = aN^(-α), compute-optimal training</div>
                 <ul>
                   <li class="model">GPT-5 <span class="tag emerging">rumored</span></li>
                   <li class="model">Claude 4+ <span class="tag emerging">future</span></li>
                   <li class="model">Gemini Advanced</li>
                   <li class="model">Meta LLaMA 4 <span class="tag emerging">development</span></li>
                   <li class="model">Mixture of Experts (MoE) scaling</li>
+                  <li class="math-concept">Sparse expert routing, load balancing</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Novel Architectures</summary>
+                <div class="math-desc">Alternative attention mechanisms, efficient transformers</div>
                 <ul>
                   <li class="model">Mamba (State Space Models) <span class="tag emerging">efficiency</span></li>
+                  <li class="math-concept">Selective state spaces, linear complexity</li>
                   <li class="model">RetNet (Alternative to Transformers)</li>
+                  <li class="math-concept">Retention mechanism, parallel/recurrent duality</li>
                   <li class="model">Hyena (Subquadratic Attention)</li>
+                  <li class="math-concept">Convolutional operators, implicit attention</li>
                   <li class="model">Kolmogorov-Arnold Networks</li>
+                  <li class="math-concept">KAN: learnable activation functions on edges</li>
                   <li class="model">Liquid Neural Networks</li>
+                  <li class="math-concept">Time-aware neurons, causal interactions</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 AGI Research</summary>
+                <div class="math-desc">Multi-task learning, meta-learning, unified architectures</div>
                 <ul>
                   <li class="model">OpenAI Q* <span class="tag emerging">rumored reasoning</span></li>
                   <li class="model">DeepMind Gato <span class="tag">generalist agent</span></li>
+                  <li class="math-concept">Multi-modal tokenization, unified architecture</li>
                   <li class="model">AdA (Adaptive Agent)</li>
                   <li class="model">Artificial General Intelligence projects</li>
                 </ul>
               </details>
               <details>
                 <summary>🔷 Neuromorphic & Quantum-AI</summary>
+                <div class="math-desc">Spiking neural networks, quantum circuit learning</div>
                 <ul>
                   <li class="model">Intel Loihi (Neuromorphic)</li>
+                  <li class="math-concept">Spiking neural networks, event-driven computation</li>
                   <li class="model">IBM TrueNorth</li>
                   <li class="model">Quantum Machine Learning</li>
+                  <li class="math-concept">Quantum superposition, entanglement for ML</li>
                   <li class="model">Variational Quantum Circuits</li>
+                  <li class="math-concept">Parameterized quantum gates, classical optimization</li>
                 </ul>
               </details>
             </details>
@@ -936,31 +1440,47 @@
         <!-- Alternative ML Approaches -->
         <details>
           <summary><span class="branch">Alternative ML Paradigms</span> <span class="tag">non-deep learning</span></summary>
+          <div class="math-desc">Population-based algorithms, probabilistic inference, continual adaptation</div>
           <details>
             <summary>🔷 Evolutionary & Genetic Algorithms</summary>
+            <div class="math-desc">Population dynamics, fitness functions, genetic operators</div>
             <ul>
               <li class="model">NEAT (NeuroEvolution)</li>
+              <li class="math-concept">Topology evolution, complexification</li>
               <li class="model">Genetic Programming</li>
+              <li class="math-concept">Tree-based program evolution</li>
               <li class="model">Differential Evolution</li>
+              <li class="math-concept">DE: x' = x_a + F(x_b - x_c)</li>
               <li class="model">Particle Swarm Optimization</li>
+              <li class="math-concept">Swarm intelligence, velocity updates</li>
             </ul>
           </details>
           <details>
             <summary>🔷 Probabilistic & Bayesian ML</summary>
+            <div class="math-desc">Prior distributions, posterior inference, uncertainty quantification</div>
             <ul>
               <li class="model">Gaussian Processes</li>
+              <li class="math-concept">Kernel methods, posterior predictive distribution</li>
               <li class="model">Bayesian Neural Networks</li>
+              <li class="math-concept">Weight uncertainty, variational inference</li>
               <li class="model">Variational Inference</li>
+              <li class="math-concept">KL divergence minimization, ELBO optimization</li>
               <li class="model">Hidden Markov Models</li>
+              <li class="math-concept">Forward-backward algorithm, Viterbi decoding</li>
             </ul>
           </details>
           <details>
             <summary>🔷 Online & Continual Learning</summary>
+            <div class="math-desc">Catastrophic forgetting, memory replay, elastic weight consolidation</div>
             <ul>
               <li class="model">Online Gradient Descent</li>
+              <li class="math-concept">Regret bounds, convergence rates</li>
               <li class="model">Elastic Weight Consolidation</li>
+              <li class="math-concept">Fisher information matrix, importance weights</li>
               <li class="model">Progressive Neural Networks</li>
+              <li class="math-concept">Lateral connections, task-specific columns</li>
               <li class="model">Meta-Learning (MAML)</li>
+              <li class="math-concept">Gradient-based meta-learning, few-shot adaptation</li>
             </ul>
           </details>
         </details>
@@ -969,10 +1489,12 @@
     </section>
 
     <footer>
-      *This family tree includes both established and emerging models. Some future versions are speculative. 
+      *This comprehensive family tree includes both established and emerging models with their mathematical foundations. Some future versions are speculative. The mathematical descriptions provide the theoretical backbone underlying each AI system.
+      <br><br>
       <strong>Last updated:</strong> August 2025 | 
       <a href="#" onclick="expandAll()">Expand All</a> | 
-      <a href="#" onclick="collapseAll()">Collapse All</a>
+      <a href="#" onclick="collapseAll()">Collapse All</a> |
+      <a href="#" onclick="toggleMath()">Toggle Math Details</a>
     </footer>
   </div>
 
@@ -983,8 +1505,17 @@
     
     function collapseAll() {
       document.querySelectorAll('details').forEach(detail => detail.open = false);
-      // Keep the main AI branch open
-      document.querySelector('details').open = true;
+      // Keep the main AI branch and Mathematical Foundations open
+      document.querySelectorAll('details')[0].open = true; // Math foundations
+      document.querySelectorAll('details')[1].open = true; // AI branch
+    }
+
+    function toggleMath() {
+      const mathDescs = document.querySelectorAll('.math-desc, .math-concept, .math-formula');
+      const isVisible = mathDescs[0].style.display !== 'none';
+      mathDescs.forEach(el => {
+        el.style.display = isVisible ? 'none' : 'block';
+      });
     }
 
     // Add click analytics
@@ -1007,7 +1538,21 @@
         if (focused.tagName === 'SUMMARY') {
           focused.parentElement.open = false;
         }
+      } else if (e.key === 'M' && e.ctrlKey) {
+        e.preventDefault();
+        toggleMath();
       }
+    });
+
+    // Add smooth scrolling for better UX
+    document.querySelectorAll('summary').forEach(summary => {
+      summary.addEventListener('click', (e) => {
+        setTimeout(() => {
+          if (e.target.closest('details').open) {
+            e.target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }, 100);
+      });
     });
   </script>
 </body>
