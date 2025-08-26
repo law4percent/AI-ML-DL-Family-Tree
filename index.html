@@ -4,163 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI → ML → Deep Learning Family Tree (with Math Backbone)</title>
-  <style>
-    :root {
-      --bg: #0b0f14;
-      --panel: #111826;
-      --text: #e6eef7;
-      --muted: #9db0c7;
-      --accent: #6aa5ff;
-      --accent-2: #7cf1c8;
-      --accent-3: #ff6b9d;
-      --accent-4: #ffd93d;
-      --math-accent: #b794f6;
-      --ring: rgba(106,165,255,.35);
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 20% -10%, rgba(124,241,200,.06), transparent 60%),
-                  radial-gradient(1200px 800px at 120% 10%, rgba(106,165,255,.06), transparent 60%),
-                  var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-    }
-    .wrap {
-      max-width: 1400px;
-      margin: 48px auto;
-      padding: 0 20px 40px;
-    }
-    header {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-    h1 { font-size: clamp(24px, 3vw, 34px); margin: 0; }
-    p.lead { color: var(--muted); margin: 0; }
-
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
-      border: 1px solid rgba(148,163,184,.12);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25), 0 0 0 1px rgba(106,165,255,.05) inset;
-    }
-
-    /* Tree using <details> */
-    details {
-      border-left: 2px solid rgba(157,176,199,.22);
-      padding-left: 14px;
-      margin: 6px 0 2px 0;
-    }
-    summary {
-      list-style: none;
-      cursor: pointer;
-      position: relative;
-      padding: 8px 10px 8px 28px;
-      border-radius: 12px;
-      transition: background .15s ease, box-shadow .15s ease;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary:before {
-      content: "▸";
-      position: absolute;
-      left: 6px; top: 8px;
-      width: 18px;
-      text-align: center;
-      color: var(--accent);
-      transition: transform .2s ease;
-    }
-    details[open] > summary:before { transform: rotate(90deg); }
-    summary:hover { background: rgba(106,165,255,.08); }
-    details[open] > summary { background: rgba(124,241,200,.06); box-shadow: 0 0 0 2px var(--ring); }
-
-    .tag {
-      display: inline-block;
-      font-size: 12px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(157,176,199,.25);
-      color: var(--muted);
-      margin-left: 8px;
-    }
-    .tag.hot { background: rgba(255,107,157,.15); border-color: var(--accent-3); color: var(--accent-3); }
-    .tag.emerging { background: rgba(255,217,61,.15); border-color: var(--accent-4); color: var(--accent-4); }
-    .tag.math { background: rgba(183,148,246,.15); border-color: var(--math-accent); color: var(--math-accent); }
-    
-    .branch { color: var(--accent-2); font-weight: 600; }
-    .model { color: var(--accent); }
-    .desc { color: var(--muted); font-size: 14px; margin-left: 28px; margin-bottom: 8px; }
-    .math-desc { 
-      color: var(--math-accent); 
-      font-size: 14px; 
-      margin-left: 28px; 
-      margin-bottom: 8px; 
-      font-family: 'Courier New', monospace;
-      background: rgba(183,148,246,.08);
-      padding: 8px;
-      border-radius: 6px;
-      border-left: 3px solid var(--math-accent);
-    }
-
-    .legend { display:flex; gap:12px; flex-wrap:wrap; margin:10px 0 16px; }
-    .pill{padding:4px 10px;border-radius:999px;border:1px solid rgba(157,176,199,.25);color:var(--muted);font-size:12px}
-
-    footer { margin-top: 22px; color: var(--muted); font-size: 13px; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    ul { margin: 8px 0; padding-left: 20px; }
-    li { margin: 3px 0; }
-    li.model { color: var(--accent); }
-    li.math-concept { color: var(--math-accent); font-style: italic; }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin: 16px 0;
-      padding: 16px;
-      background: rgba(17,24,38,.6);
-      border-radius: 12px;
-      border: 1px solid rgba(148,163,184,.08);
-    }
-    .stat-item {
-      text-align: center;
-    }
-    .stat-number {
-      font-size: 24px;
-      font-weight: bold;
-      color: var(--accent-2);
-    }
-    .stat-label {
-      font-size: 12px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .math-formula {
-      background: rgba(183,148,246,.1);
-      border: 1px solid rgba(183,148,246,.3);
-      border-radius: 8px;
-      padding: 12px;
-      margin: 8px 0;
-      font-family: 'Courier New', monospace;
-      color: var(--math-accent);
-      font-size: 13px;
-      overflow-x: auto;
-    }
-
-    .backbone-section {
-      background: linear-gradient(135deg, rgba(183,148,246,.08), rgba(183,148,246,.03));
-      border: 1px solid rgba(183,148,246,.2);
-      border-radius: 12px;
-      margin: 16px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
   <div class="wrap">
@@ -1376,10 +1221,347 @@
               </details>
             </details>
 
+            <!-- Quantum AI -->
+            <details>
+              <summary>🌿 <span class="branch">Quantum AI & Computing</span> <span class="tag emerging">quantum advantage</span></summary>
+              <div class="math-desc">Quantum superposition, entanglement, quantum circuit learning, variational quantum algorithms</div>
+              <details>
+                <summary>🔷 Quantum Machine Learning (QML)</summary>
+                <div class="math-desc">Quantum feature maps, parameterized quantum circuits, quantum kernels</div>
+                <ul>
+                  <li class="model">Variational Quantum Circuits (VQC)</li>
+                  <li class="math-concept">U(θ) = ∏U_i(θ_i), parameterized quantum gates</li>
+                  <li class="model">Quantum Neural Networks</li>
+                  <li class="math-concept">Quantum perceptrons, quantum backpropagation</li>
+                  <li class="model">Quantum Support Vector Machines</li>
+                  <li class="math-concept">Quantum feature maps, exponential kernel spaces</li>
+                  <li class="model">Quantum Generative Models</li>
+                  <li class="math-concept">Born machine, quantum GANs</li>
+                  <li class="model">IBM Qiskit Machine Learning</li>
+                  <li class="model">Google Cirq TensorFlow Quantum</li>
+                  <li class="model">PennyLane (Xanadu)</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Quantum Algorithms</summary>
+                <div class="math-desc">Grover's algorithm, quantum Fourier transform, amplitude amplification</div>
+                <ul>
+                  <li class="model">Variational Quantum Eigensolver (VQE)</li>
+                  <li class="math-concept">⟨ψ(θ)|H|ψ(θ)⟩ minimization, NISQ algorithms</li>
+                  <li class="model">Quantum Approximate Optimization (QAOA)</li>
+                  <li class="math-concept">Alternating ansatz: e^(-iγH_C)e^(-iβH_M)</li>
+                  <li class="model">Quantum Principal Component Analysis</li>
+                  <li class="math-concept">Quantum matrix exponentiation, HHL algorithm</li>
+                  <li class="model">D-Wave Quantum Annealing</li>
+                  <li class="math-concept">Ising model optimization, quantum tunneling</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Hybrid Quantum-Classical</summary>
+                <div class="math-desc">Variational hybrid algorithms, classical optimization of quantum circuits</div>
+                <ul>
+                  <li class="model">Quantum-Classical Neural Networks</li>
+                  <li class="model">Quantum Transfer Learning</li>
+                  <li class="math-concept">Pre-trained quantum feature extractors</li>
+                  <li class="model">Quantum Reinforcement Learning</li>
+                  <li class="math-concept">Quantum policy gradients, quantum Q-learning</li>
+                  <li class="model">Quantum Federated Learning</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Federated & Distributed Learning -->
+            <details>
+              <summary>🌿 <span class="branch">Federated & Distributed Learning</span> <span class="tag hot">privacy-preserving</span></summary>
+              <div class="math-desc">Distributed optimization, privacy preservation, secure aggregation, communication efficiency</div>
+              <details>
+                <summary>🔷 Federated Learning Algorithms</summary>
+                <div class="math-desc">Federated averaging, non-IID data challenges, client sampling strategies</div>
+                <ul>
+                  <li class="model">FedAvg (Federated Averaging)</li>
+                  <li class="math-concept">w^{t+1} = w^t - η∇F(w^t), F = Σp_kF_k(w)</li>
+                  <li class="model">FedProx (Federated Proximal)</li>
+                  <li class="math-concept">Proximal term: μ/2||w-w^t||², heterogeneity handling</li>
+                  <li class="model">FedNova (Federated Nova)</li>
+                  <li class="math-concept">Normalized averaging, varying local steps</li>
+                  <li class="model">SCAFFOLD</li>
+                  <li class="math-concept">Control variates for client drift correction</li>
+                  <li class="model">FedOpt (Adam/AdaGrad variants)</li>
+                  <li class="math-concept">Server-side adaptive optimization</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Split & Vertical Learning</summary>
+                <div class="math-desc">Model splitting, gradient compression, vertical data partitioning</div>
+                <ul>
+                  <li class="model">Split Learning</li>
+                  <li class="math-concept">Forward pass splitting, smashed data transmission</li>
+                  <li class="model">Vertical Federated Learning</li>
+                  <li class="math-concept">Feature space partitioning, secure computation</li>
+                  <li class="model">SplitFed (Split + Federated)</li>
+                  <li class="model">Gradient Compression</li>
+                  <li class="math-concept">Sparsification, quantization, error feedback</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Privacy & Security</summary>
+                <div class="math-desc">Differential privacy, secure aggregation, homomorphic encryption</div>
+                <ul>
+                  <li class="model">Differential Privacy in FL</li>
+                  <li class="math-concept">DP-SGD: noise σ = C√(2ln(1.25/δ))/ε</li>
+                  <li class="model">Secure Multiparty Computation</li>
+                  <li class="math-concept">Secret sharing, garbled circuits</li>
+                  <li class="model">Byzantine-Robust Aggregation</li>
+                  <li class="math-concept">Krum, trimmed mean, geometric median</li>
+                  <li class="model">Homomorphic Encryption</li>
+                  <li class="math-concept">Computing on encrypted data, CKKS scheme</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- MLOps & Infrastructure -->
+            <details>
+              <summary>🌿 <span class="branch">AI Infrastructure & MLOps</span> <span class="tag">production systems</span></summary>
+              <div class="math-desc">Continuous integration/deployment, model monitoring, A/B testing, drift detection</div>
+              <details>
+                <summary>🔷 Model Deployment & Serving</summary>
+                <div class="math-desc">Load balancing, auto-scaling, latency optimization, resource allocation</div>
+                <ul>
+                  <li class="model">Hugging Face Inference Endpoints</li>
+                  <li class="model">Replicate Cloud Platform</li>
+                  <li class="model">AWS SageMaker Endpoints</li>
+                  <li class="model">Google Vertex AI</li>
+                  <li class="model">Azure ML Endpoints</li>
+                  <li class="model">Seldon Core</li>
+                  <li class="model">KServe (Kubernetes)</li>
+                  <li class="model">TensorFlow Serving</li>
+                  <li class="model">TorchServe</li>
+                  <li class="model">ONNX Runtime Server</li>
+                  <li class="math-concept">Request batching, model caching, GPU utilization</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Monitoring & Observability</summary>
+                <div class="math-desc">Statistical drift detection, performance monitoring, alert systems</div>
+                <ul>
+                  <li class="model">Weights & Biases</li>
+                  <li class="model">MLflow Tracking</li>
+                  <li class="model">Neptune AI</li>
+                  <li class="model">ClearML</li>
+                  <li class="model">Evidently AI <span class="tag">drift detection</span></li>
+                  <li class="math-concept">KL divergence drift: D_KL(P_ref||P_curr)</li>
+                  <li class="model">Arize AI</li>
+                  <li class="model">Fiddler AI</li>
+                  <li class="model">WhyLabs</li>
+                  <li class="math-concept">Population stability index, data quality metrics</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Feature Engineering & Storage</summary>
+                <div class="math-desc">Feature pipelines, versioning, real-time serving, consistency</div>
+                <ul>
+                  <li class="model">Feast (Feature Store)</li>
+                  <li class="model">Tecton</li>
+                  <li class="model">Hopsworks</li>
+                  <li class="model">AWS Feature Store</li>
+                  <li class="model">Databricks Feature Store</li>
+                  <li class="model">DVC (Data Version Control)</li>
+                  <li class="model">Great Expectations</li>
+                  <li class="math-concept">Feature consistency, point-in-time correctness</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 A/B Testing & Experimentation</summary>
+                <div class="math-desc">Statistical significance, power analysis, multi-armed bandits</div>
+                <ul>
+                  <li class="model">Optimizely</li>
+                  <li class="model">LaunchDarkly</li>
+                  <li class="model">Split.io</li>
+                  <li class="model">Google Optimize</li>
+                  <li class="model">Facebook Planout</li>
+                  <li class="math-concept">Welch's t-test, sequential testing, false discovery rate</li>
+                  <li class="model">Multi-Armed Bandits</li>
+                  <li class="math-concept">Thompson sampling, upper confidence bounds</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Retrieval-Augmented Generation -->
+            <details>
+              <summary>🌿 <span class="branch">Retrieval-Augmented Generation (RAG)</span> <span class="tag hot">knowledge integration</span></summary>
+              <div class="math-desc">Dense retrieval, vector similarity, knowledge fusion, query decomposition</div>
+              <details>
+                <summary>🔷 Dense Retrieval Systems</summary>
+                <div class="math-desc">Bi-encoder architecture, contrastive learning, hard negative mining</div>
+                <ul>
+                  <li class="model">DPR (Dense Passage Retrieval)</li>
+                  <li class="math-concept">Similarity: sim(q,p) = E_Q(q)^T E_P(p)</li>
+                  <li class="model">ColBERT</li>
+                  <li class="math-concept">Late interaction: Σ max_j E_q_i^T E_p_j</li>
+                  <li class="model">ANCE (Approximate Nearest Neighbor)</li>
+                  <li class="model">RetroMAE</li>
+                  <li class="math-concept">Masked autoencoding for retrieval</li>
+                  <li class="model">E5 / BGE Embeddings</li>
+                  <li class="model">Instructor Embeddings</li>
+                  <li class="math-concept">Task-aware dense retrieval</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Advanced RAG Architectures</summary>
+                <div class="math-desc">Multi-hop reasoning, fusion-in-decoder, retrieval refinement</div>
+                <ul>
+                  <li class="model">FiD (Fusion-in-Decoder)</li>
+                  <li class="math-concept">Independent encoding, joint decoding</li>
+                  <li class="model">REALM (Retrieval-Enhanced LM)</li>
+                  <li class="math-concept">End-to-end retrieval learning</li>
+                  <li class="model">RAG-Token / RAG-Sequence</li>
+                  <li class="model">Self-RAG <span class="tag hot">reflection</span></li>
+                  <li class="math-concept">Retrieval necessity prediction, self-critique</li>
+                  <li class="model">Modular RAG</li>
+                  <li class="model">Graph RAG</li>
+                  <li class="math-concept">Knowledge graph enhanced retrieval</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Vector Databases & Search</summary>
+                <div class="math-desc">Approximate nearest neighbor search, indexing algorithms, sharding</div>
+                <ul>
+                  <li class="model">Pinecone</li>
+                  <li class="model">Weaviate</li>
+                  <li class="model">Qdrant</li>
+                  <li class="model">Chroma</li>
+                  <li class="model">Milvus / Zilliz</li>
+                  <li class="model">FAISS (Meta)</li>
+                  <li class="math-concept">HNSW: Hierarchical Navigable Small World</li>
+                  <li class="model">Annoy (Spotify)</li>
+                  <li class="model">ScaNN (Google)</li>
+                  <li class="math-concept">Product quantization, inverted file index</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Causal AI & World Models -->
+            <details>
+              <summary>🌿 <span class="branch">Causal AI & World Models</span> <span class="tag emerging">reasoning & simulation</span></summary>
+              <div class="math-desc">Causal inference, structural equations, counterfactual reasoning, physics simulation</div>
+              <details>
+                <summary>🔷 Causal Inference & Discovery</summary>
+                <div class="math-desc">Directed acyclic graphs, do-calculus, structural causal models</div>
+                <ul>
+                  <li class="model">PC Algorithm</li>
+                  <li class="math-concept">Constraint-based causal discovery</li>
+                  <li class="model">GES (Greedy Equivalence Search)</li>
+                  <li class="model">CausalML (Uber)</li>
+                  <li class="model">DoWhy (Microsoft)</li>
+                  <li class="math-concept">do(X=x): P(Y|do(X=x)) causal intervention</li>
+                  <li class="model">Neural Causal Models</li>
+                  <li class="math-concept">Structural equation models with neural networks</li>
+                  <li class="model">CausalNex</li>
+                  <li class="model">pgmpy (Probabilistic Graphical Models)</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 World Models & Simulation</summary>
+                <div class="math-desc">Model-based reinforcement learning, physics simulation, predictive modeling</div>
+                <ul>
+                  <li class="model">DreamerV3 (DeepMind)</li>
+                  <li class="math-concept">Latent world model: p(s_{t+1}|s_t,a_t)</li>
+                  <li class="model">MuJoCo (Multi-Joint dynamics)</li>
+                  <li class="math-concept">Contact dynamics, constraint solving</li>
+                  <li class="model">Isaac Gym (NVIDIA)</li>
+                  <li class="model">PyBullet</li>
+                  <li class="model">Habitat (Meta)</li>
+                  <li class="model">AI Habitat 2.0</li>
+                  <li class="model">ThreeDWorld (MIT)</li>
+                  <li class="math-concept">Physics-informed neural networks (PINNs)</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Digital Twins & Simulation</summary>
+                <div class="math-desc">Real-time synchronization, digital-physical coupling, predictive maintenance</div>
+                <ul>
+                  <li class="model">NVIDIA Omniverse</li>
+                  <li class="model">Unity ML-Agents</li>
+                  <li class="model">Unreal Engine AI</li>
+                  <li class="model">AnyLogic Simulation</li>
+                  <li class="model">CARLA (Autonomous Driving)</li>
+                  <li class="math-concept">Sensor simulation, traffic modeling</li>
+                  <li class="model">Gazebo (Robotics)</li>
+                  <li class="model">CoppeliaSim</li>
+                </ul>
+              </details>
+            </details>
+
+            <!-- Creative AI -->
+            <details>
+              <summary>🌿 <span class="branch">Creative AI</span> <span class="tag hot">artistic generation</span></summary>
+              <div class="math-desc">Style transfer, generative adversarial training, artistic style optimization</div>
+              <details>
+                <summary>🔷 Art & Visual Generation</summary>
+                <div class="math-desc">Neural style transfer, GANs for art, aesthetic loss functions</div>
+                <ul>
+                  <li class="model">DALL·E 2/3 <span class="tag hot">text-to-image</span></li>
+                  <li class="model">Midjourney v6</li>
+                  <li class="model">Stable Diffusion Art</li>
+                  <li class="model">Adobe Firefly</li>
+                  <li class="model">RunwayML Gen-2</li>
+                  <li class="model">StyleGAN for Art</li>
+                  <li class="math-concept">Style loss: L_style = Σ||G(F) - G(S)||²</li>
+                  <li class="model">Neural Style Transfer</li>
+                  <li class="math-concept">Gram matrices, content + style loss</li>
+                  <li class="model">ArtBreeder</li>
+                  <li class="model">NightCafe Studio</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Music & Audio Generation</summary>
+                <div class="math-desc">Harmonic analysis, rhythm modeling, spectral synthesis</div>
+                <ul>
+                  <li class="model">Suno AI <span class="tag hot">commercial music</span></li>
+                  <li class="model">Udio <span class="tag hot">AI music</span></li>
+                  <li class="model">MusicLM (Google)</li>
+                  <li class="model">Jukebox (OpenAI)</li>
+                  <li class="math-concept">VQ-VAE hierarchical audio modeling</li>
+                  <li class="model">AIVA (AI Composer)</li>
+                  <li class="model">Amper Music</li>
+                  <li class="model">Soundraw</li>
+                  <li class="model">MuseNet (OpenAI)</li>
+                  <li class="math-concept">Transformer for symbolic music</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Creative Writing & Content</summary>
+                <div class="math-desc">Language modeling for creativity, style control, narrative generation</div>
+                <ul>
+                  <li class="model">GPT-4 Creative Writing</li>
+                  <li class="model">Claude Creative Assistant</li>
+                  <li class="model">Jasper AI</li>
+                  <li class="model">Copy.ai</li>
+                  <li class="model">Writesonic</li>
+                  <li class="model">NovelAI</li>
+                  <li class="model">Sudowrite</li>
+                  <li class="math-concept">Controllable generation, style conditioning</li>
+                </ul>
+              </details>
+              <details>
+                <summary>🔷 Interactive & Procedural AI</summary>
+                <div class="math-desc">Real-time generation, user interaction modeling, procedural algorithms</div>
+                <ul>
+                  <li class="model">AI Dungeon</li>
+                  <li class="model">Character.AI</li>
+                  <li class="model">Replika</li>
+                  <li class="model">Procedural Content Generation</li>
+                  <li class="math-concept">L-systems, cellular automata, noise functions</li>
+                  <li class="model">Unity ML-Agents Creative</li>
+                  <li class="model">Unreal Engine MetaHuman</li>
+                </ul>
+              </details>
+            </details>
+
             <!-- Emerging & Research -->
             <details>
               <summary>🌿 <span class="branch">Emerging AI Research</span> <span class="tag emerging">cutting-edge</span></summary>
-              <div class="math-desc">Scaling laws, emergent capabilities, novel architectures</div>
+              <div class="math-desc">Scaling laws: L(N) = aN^(-α), compute-optimal training, emergent capabilities</div>
               <details>
                 <summary>🔷 Foundation Model Research</summary>
                 <div class="math-desc">Scaling laws: L(N) = aN^(-α), compute-optimal training</div>
@@ -1420,16 +1602,17 @@
                 </ul>
               </details>
               <details>
-                <summary>🔷 Neuromorphic & Quantum-AI</summary>
-                <div class="math-desc">Spiking neural networks, quantum circuit learning</div>
+                <summary>🔷 Neuromorphic Computing</summary>
+                <div class="math-desc">Spiking neural networks, event-driven computation, brain-inspired architectures</div>
                 <ul>
-                  <li class="model">Intel Loihi (Neuromorphic)</li>
-                  <li class="math-concept">Spiking neural networks, event-driven computation</li>
+                  <li class="model">Intel Loihi 2</li>
+                  <li class="math-concept">Spiking neural networks, asynchronous computation</li>
                   <li class="model">IBM TrueNorth</li>
-                  <li class="model">Quantum Machine Learning</li>
-                  <li class="math-concept">Quantum superposition, entanglement for ML</li>
-                  <li class="model">Variational Quantum Circuits</li>
-                  <li class="math-concept">Parameterized quantum gates, classical optimization</li>
+                  <li class="model">SpiNNaker (Manchester)</li>
+                  <li class="model">BrainChip Akida</li>
+                  <li class="math-concept">Integrate-and-fire neurons, spike-timing dependent plasticity</li>
+                  <li class="model">Memristor Networks</li>
+                  <li class="math-concept">Resistive memory, in-memory computation</li>
                 </ul>
               </details>
             </details>
@@ -1498,62 +1681,6 @@
     </footer>
   </div>
 
-  <script>
-    function expandAll() {
-      document.querySelectorAll('details').forEach(detail => detail.open = true);
-    }
-    
-    function collapseAll() {
-      document.querySelectorAll('details').forEach(detail => detail.open = false);
-      // Keep the main AI branch and Mathematical Foundations open
-      document.querySelectorAll('details')[0].open = true; // Math foundations
-      document.querySelectorAll('details')[1].open = true; // AI branch
-    }
-
-    function toggleMath() {
-      const mathDescs = document.querySelectorAll('.math-desc, .math-concept, .math-formula');
-      const isVisible = mathDescs[0].style.display !== 'none';
-      mathDescs.forEach(el => {
-        el.style.display = isVisible ? 'none' : 'block';
-      });
-    }
-
-    // Add click analytics
-    document.querySelectorAll('summary').forEach(summary => {
-      summary.addEventListener('click', (e) => {
-        const text = e.target.textContent.trim();
-        console.log(`Clicked: ${text}`);
-      });
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === 'Enter') {
-        const focused = document.activeElement;
-        if (focused.tagName === 'SUMMARY') {
-          focused.parentElement.open = true;
-        }
-      } else if (e.key === 'ArrowLeft') {
-        const focused = document.activeElement;
-        if (focused.tagName === 'SUMMARY') {
-          focused.parentElement.open = false;
-        }
-      } else if (e.key === 'M' && e.ctrlKey) {
-        e.preventDefault();
-        toggleMath();
-      }
-    });
-
-    // Add smooth scrolling for better UX
-    document.querySelectorAll('summary').forEach(summary => {
-      summary.addEventListener('click', (e) => {
-        setTimeout(() => {
-          if (e.target.closest('details').open) {
-            e.target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-        }, 100);
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
