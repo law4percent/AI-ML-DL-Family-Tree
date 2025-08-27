@@ -45,188 +45,8 @@
       </div>
     </div>
 
-    <section class="card backbone-section">
-      <details open>
-        <summary><span class="branch">📐 Mathematical Foundations & Backbone</span> <span class="tag math">core theory</span></summary>
-        <div class="desc">The mathematical bedrock that underlies all AI systems - from classical statistics to modern deep learning theory.</div>
-        
-        <details>
-          <summary><span class="branch">Linear Algebra</span> <span class="tag math">vectors & matrices</span></summary>
-          <div class="math-desc">Foundation of all neural network computations, transformations, and data representations.</div>
-          <ul>
-            <li class="math-concept">Vector Spaces & Linear Transformations</li>
-            <li class="math-concept">Matrix Multiplication & Decomposition (SVD, LU, QR)</li>
-            <li class="math-concept">Eigenvalues & Eigenvectors</li>
-            <li class="math-concept">Principal Component Analysis (PCA)</li>
-            <li class="math-concept">Tensor Operations (multi-dimensional arrays)</li>
-          </ul>
-          <div class="math-formula">
-            Matrix multiplication: C = AB where C[i,j] = Σ(k) A[i,k] * B[k,j]<br>
-            Neural layer: y = σ(Wx + b) where W=weights, x=input, b=bias, σ=activation
-          </div>
-        </details>
 
-        <details>
-          <summary><span class="branch">Calculus & Optimization</span> <span class="tag math">learning algorithms</span></summary>
-          <div class="math-desc">Drives gradient-based learning, backpropagation, and parameter optimization in neural networks.</div>
-          <ul>
-            <li class="math-concept">Partial Derivatives & Gradients</li>
-            <li class="math-concept">Chain Rule (backpropagation foundation)</li>
-            <li class="math-concept">Gradient Descent & Variants (SGD, Adam, AdaGrad)</li>
-            <li class="math-concept">Lagrange Multipliers (constrained optimization)</li>
-            <li class="math-concept">Convex Optimization</li>
-            <li class="math-concept">Automatic Differentiation</li>
-          </ul>
-          <div class="math-formula">
-            Gradient Descent: θ(t+1) = θ(t) - α∇J(θ)<br>
-            Backprop: ∂L/∂w = ∂L/∂y * ∂y/∂w (chain rule)<br>
-            Adam: m(t) = β₁m(t-1) + (1-β₁)g(t), v(t) = β₂v(t-1) + (1-β₂)g(t)²
-          </div>
-        </details>
-
-        <details>
-          <summary><span class="branch">Probability & Statistics</span> <span class="tag math">uncertainty & learning</span></summary>
-          <div class="math-desc">Handles uncertainty, enables Bayesian learning, and provides theoretical foundations for many ML algorithms.</div>
-          <ul>
-            <li class="math-concept">Bayes' Theorem & Bayesian Inference</li>
-            <li class="math-concept">Probability Distributions (Gaussian, Bernoulli, Categorical)</li>
-            <li class="math-concept">Maximum Likelihood Estimation (MLE)</li>
-            <li class="math-concept">Maximum A Posteriori (MAP) Estimation</li>
-            <li class="math-concept">Central Limit Theorem</li>
-            <li class="math-concept">Monte Carlo Methods</li>
-            <li class="math-concept">Markov Chains & Stochastic Processes</li>
-          </ul>
-          <div class="math-formula">
-            Bayes: P(A|B) = P(B|A)P(A) / P(B)<br>
-            MLE: θ* = argmax Π P(x_i|θ)<br>
-            Cross-entropy loss: L = -Σ y_i log(ŷ_i)
-          </div>
-        </details>
-
-        <details>
-          <summary><span class="branch">Information Theory</span> <span class="tag math">entropy & compression</span></summary>
-          <div class="math-desc">Quantifies information content, drives attention mechanisms, and enables efficient model architectures.</div>
-          <ul>
-            <li class="math-concept">Entropy & Mutual Information</li>
-            <li class="math-concept">Kullback-Leibler (KL) Divergence</li>
-            <li class="math-concept">Cross-Entropy & Log-Likelihood</li>
-            <li class="math-concept">Data Compression & Coding Theory</li>
-            <li class="math-concept">Channel Capacity</li>
-          </ul>
-          <div class="math-formula">
-            Entropy: H(X) = -Σ P(x)log P(x)<br>
-            KL Divergence: D_KL(P||Q) = Σ P(x)log(P(x)/Q(x))<br>
-            Attention: Attention(Q,K,V) = softmax(QK^T/√d_k)V
-          </div>
-        </details>
-
-        <details>
-          <summary><span class="branch">Graph Theory & Discrete Math</span> <span class="tag math">structure & logic</span></summary>
-          <div class="math-desc">Powers graph neural networks, combinatorial optimization, and symbolic AI reasoning systems.</div>
-          <ul>
-            <li class="math-concept">Graph Algorithms (BFS, DFS, Shortest Path)</li>
-            <li class="math-concept">Adjacency Matrices & Laplacian</li>
-            <li class="math-concept">Spectral Graph Theory</li>
-            <li class="math-concept">Boolean Logic & Satisfiability</li>
-            <li class="math-concept">Combinatorial Optimization</li>
-            <li class="math-concept">Message Passing Algorithms</li>
-          </ul>
-          <div class="math-formula">
-            GCN Layer: H^(l+1) = σ(D^(-1/2)AD^(-1/2)H^(l)W^(l))<br>
-            Message Passing: h_v^(t+1) = UPDATE(h_v^(t), AGGREGATE({h_u^(t): u ∈ N(v)}))
-          </div>
-        </details>
-
-        <details>
-          <summary><span class="branch">Functional Analysis & Kernel Methods</span> <span class="tag math">infinite dimensions</span></summary>
-          <div class="math-desc">Provides theoretical foundations for SVMs, Gaussian processes, and function approximation theory.</div>
-          <ul>
-            <li class="math-concept">Reproducing Kernel Hilbert Spaces (RKHS)</li>
-            <li class="math-concept">Kernel Trick & Kernel Functions</li>
-            <li class="math-concept">Universal Approximation Theorem</li>
-            <li class="math-concept">Fourier Analysis & Transforms</li>
-            <li class="math-concept">Wavelets & Multi-resolution Analysis</li>
-          </ul>
-          <div class="math-formula">
-            Kernel SVM: f(x) = Σ α_i y_i K(x_i, x) + b<br>
-            RBF Kernel: K(x,x') = exp(-||x-x'||²/2σ²)<br>
-            Neural Tangent Kernel: K_NTK(x,x') = E[∇f(x;θ)·∇f(x';θ)]
-          </div>
-        </details>
-
-        <details>
-          <summary><span class="branch">Numerical Methods & Computational Math</span> <span class="tag math">efficient computation</span></summary>
-          <div class="math-desc">Enables fast, stable computation in high-dimensional spaces with finite precision arithmetic.</div>
-          <ul>
-            <li class="math-concept">Numerical Stability & Conditioning</li>
-            <li class="math-concept">Fast Fourier Transform (FFT)</li>
-            <li class="math-concept">Iterative Methods (Conjugate Gradient)</li>
-            <li class="math-concept">Approximation Theory</li>
-            <li class="math-concept">Finite Difference & Finite Element Methods</li>
-            <li class="math-concept">Parallel & Distributed Algorithms</li>
-          </ul>
-          <div class="math-formula">
-            Numerical stability: condition number κ(A) = ||A|| ||A^(-1)||<br>
-            FFT: O(n log n) instead of O(n²) for DFT<br>
-            BatchNorm: y = γ(x-μ)/σ + β (normalize then scale/shift)
-          </div>
-        </details>
-
-        <details>
-          <summary><span class="branch">Topology & Manifold Learning</span> <span class="tag math">shape of data</span></summary>
-          <div class="math-desc">Understanding the geometric structure of high-dimensional data and latent spaces in deep learning.</div>
-          <ul>
-            <li class="math-concept">Manifold Theory & Embeddings</li>
-            <li class="math-concept">Riemannian Geometry</li>
-            <li class="math-concept">Persistent Homology</li>
-            <li class="math-concept">Dimensionality Reduction (t-SNE, UMAP)</li>
-            <li class="math-concept">Geometric Deep Learning</li>
-          </ul>
-          <div class="math-formula">
-            t-SNE: P(j|i) = exp(-||x_i-x_j||²/2σ_i²) / Σ exp(-||x_i-x_k||²/2σ_i²)<br>
-            Manifold assumption: high-dim data lies on low-dim manifold
-          </div>
-        </details>
-
-        <details>
-          <summary><span class="branch">Game Theory & Decision Theory</span> <span class="tag math">strategic learning</span></summary>
-          <div class="math-desc">Foundation for multi-agent systems, GANs, reinforcement learning, and AI safety research.</div>
-          <ul>
-            <li class="math-concept">Nash Equilibrium & Game Solutions</li>
-            <li class="math-concept">Minimax & Zero-sum Games</li>
-            <li class="math-concept">Mechanism Design</li>
-            <li class="math-concept">Auction Theory</li>
-            <li class="math-concept">Markov Decision Processes (MDPs)</li>
-            <li class="math-concept">Multi-Agent Reinforcement Learning</li>
-          </ul>
-          <div class="math-formula">
-            Minimax: min_θ max_φ V(θ,φ) (GANs)<br>
-            Bellman: V(s) = max_a Σ P(s'|s,a)[R(s,a,s') + γV(s')]<br>
-            Nash: strategies where no player benefits from unilateral change
-          </div>
-        </details>
-
-        <details>
-          <summary><span class="branch">Measure Theory & Advanced Probability</span> <span class="tag math">rigorous foundations</span></summary>
-          <div class="math-desc">Provides rigorous mathematical foundations for probability theory, stochastic processes, and learning theory.</div>
-          <ul>
-            <li class="math-concept">σ-algebras & Measure Spaces</li>
-            <li class="math-concept">Lebesgue Integration</li>
-            <li class="math-concept">Martingales & Stopping Times</li>
-            <li class="math-concept">Concentration Inequalities</li>
-            <li class="math-concept">PAC Learning Theory</li>
-            <li class="math-concept">VC Dimension & Generalization Bounds</li>
-          </ul>
-          <div class="math-formula">
-            Hoeffding: P(|S_n - E[S_n]| ≥ t) ≤ 2exp(-2t²/n)<br>
-            PAC: P(error ≤ ε) ≥ 1-δ with sufficient samples<br>
-            VC bound: generalization error ≤ empirical error + complexity term
-          </div>
-        </details>
-
-      </details>
-    </section>
-
+    <!-- AI -->
     <section class="card">
       <details open>
         <summary><span class="branch">Artificial Intelligence (AI)</span> <span class="tag">umbrella field</span></summary>
@@ -1671,13 +1491,434 @@
       </details>
     </section>
 
+    <!-- Math -->
+    <section class="card backbone-section">
+      <details open>
+        <summary><span class="branch">📐 Mathematical Foundations & Backbone</span> <span class="tag math">core theory</span></summary>
+        <div class="desc">The mathematical bedrock that underlies all AI systems - from classical statistics to modern deep learning theory.</div>
+        
+        <details>
+          <summary><span class="branch">Linear Algebra</span> <span class="tag math">vectors & matrices</span></summary>
+          <div class="math-desc">Foundation of all neural network computations, transformations, and data representations.</div>
+          <ul>
+            <li class="math-concept">Vector Spaces & Linear Transformations</li>
+            <li class="math-concept">Matrix Multiplication & Decomposition (SVD, LU, QR)</li>
+            <li class="math-concept">Eigenvalues & Eigenvectors</li>
+            <li class="math-concept">Principal Component Analysis (PCA)</li>
+            <li class="math-concept">Tensor Operations (multi-dimensional arrays)</li>
+          </ul>
+          <div class="math-formula">
+            Matrix multiplication: C = AB where C[i,j] = Σ(k) A[i,k] * B[k,j]<br>
+            Neural layer: y = σ(Wx + b) where W=weights, x=input, b=bias, σ=activation
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Calculus & Optimization</span> <span class="tag math">learning algorithms</span></summary>
+          <div class="math-desc">Drives gradient-based learning, backpropagation, and parameter optimization in neural networks.</div>
+          <ul>
+            <li class="math-concept">Partial Derivatives & Gradients</li>
+            <li class="math-concept">Chain Rule (backpropagation foundation)</li>
+            <li class="math-concept">Gradient Descent & Variants (SGD, Adam, AdaGrad)</li>
+            <li class="math-concept">Lagrange Multipliers (constrained optimization)</li>
+            <li class="math-concept">Convex Optimization</li>
+            <li class="math-concept">Automatic Differentiation</li>
+          </ul>
+          <div class="math-formula">
+            Gradient Descent: θ(t+1) = θ(t) - α∇J(θ)<br>
+            Backprop: ∂L/∂w = ∂L/∂y * ∂y/∂w (chain rule)<br>
+            Adam: m(t) = β₁m(t-1) + (1-β₁)g(t), v(t) = β₂v(t-1) + (1-β₂)g(t)²
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Probability & Statistics</span> <span class="tag math">uncertainty & learning</span></summary>
+          <div class="math-desc">Handles uncertainty, enables Bayesian learning, and provides theoretical foundations for many ML algorithms.</div>
+          <ul>
+            <li class="math-concept">Bayes' Theorem & Bayesian Inference</li>
+            <li class="math-concept">Probability Distributions (Gaussian, Bernoulli, Categorical)</li>
+            <li class="math-concept">Maximum Likelihood Estimation (MLE)</li>
+            <li class="math-concept">Maximum A Posteriori (MAP) Estimation</li>
+            <li class="math-concept">Central Limit Theorem</li>
+            <li class="math-concept">Monte Carlo Methods</li>
+            <li class="math-concept">Markov Chains & Stochastic Processes</li>
+          </ul>
+          <div class="math-formula">
+            Bayes: P(A|B) = P(B|A)P(A) / P(B)<br>
+            MLE: θ* = argmax Π P(x_i|θ)<br>
+            Cross-entropy loss: L = -Σ y_i log(ŷ_i)
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Information Theory</span> <span class="tag math">entropy & compression</span></summary>
+          <div class="math-desc">Quantifies information content, drives attention mechanisms, and enables efficient model architectures.</div>
+          <ul>
+            <li class="math-concept">Entropy & Mutual Information</li>
+            <li class="math-concept">Kullback-Leibler (KL) Divergence</li>
+            <li class="math-concept">Cross-Entropy & Log-Likelihood</li>
+            <li class="math-concept">Data Compression & Coding Theory</li>
+            <li class="math-concept">Channel Capacity</li>
+          </ul>
+          <div class="math-formula">
+            Entropy: H(X) = -Σ P(x)log P(x)<br>
+            KL Divergence: D_KL(P||Q) = Σ P(x)log(P(x)/Q(x))<br>
+            Attention: Attention(Q,K,V) = softmax(QK^T/√d_k)V
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Graph Theory & Discrete Math</span> <span class="tag math">structure & logic</span></summary>
+          <div class="math-desc">Powers graph neural networks, combinatorial optimization, and symbolic AI reasoning systems.</div>
+          <ul>
+            <li class="math-concept">Graph Algorithms (BFS, DFS, Shortest Path)</li>
+            <li class="math-concept">Adjacency Matrices & Laplacian</li>
+            <li class="math-concept">Spectral Graph Theory</li>
+            <li class="math-concept">Boolean Logic & Satisfiability</li>
+            <li class="math-concept">Combinatorial Optimization</li>
+            <li class="math-concept">Message Passing Algorithms</li>
+          </ul>
+          <div class="math-formula">
+            GCN Layer: H^(l+1) = σ(D^(-1/2)AD^(-1/2)H^(l)W^(l))<br>
+            Message Passing: h_v^(t+1) = UPDATE(h_v^(t), AGGREGATE({h_u^(t): u ∈ N(v)}))
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Functional Analysis & Kernel Methods</span> <span class="tag math">infinite dimensions</span></summary>
+          <div class="math-desc">Provides theoretical foundations for SVMs, Gaussian processes, and function approximation theory.</div>
+          <ul>
+            <li class="math-concept">Reproducing Kernel Hilbert Spaces (RKHS)</li>
+            <li class="math-concept">Kernel Trick & Kernel Functions</li>
+            <li class="math-concept">Universal Approximation Theorem</li>
+            <li class="math-concept">Fourier Analysis & Transforms</li>
+            <li class="math-concept">Wavelets & Multi-resolution Analysis</li>
+          </ul>
+          <div class="math-formula">
+            Kernel SVM: f(x) = Σ α_i y_i K(x_i, x) + b<br>
+            RBF Kernel: K(x,x') = exp(-||x-x'||²/2σ²)<br>
+            Neural Tangent Kernel: K_NTK(x,x') = E[∇f(x;θ)·∇f(x';θ)]
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Numerical Methods & Computational Math</span> <span class="tag math">efficient computation</span></summary>
+          <div class="math-desc">Enables fast, stable computation in high-dimensional spaces with finite precision arithmetic.</div>
+          <ul>
+            <li class="math-concept">Numerical Stability & Conditioning</li>
+            <li class="math-concept">Fast Fourier Transform (FFT)</li>
+            <li class="math-concept">Iterative Methods (Conjugate Gradient)</li>
+            <li class="math-concept">Approximation Theory</li>
+            <li class="math-concept">Finite Difference & Finite Element Methods</li>
+            <li class="math-concept">Parallel & Distributed Algorithms</li>
+          </ul>
+          <div class="math-formula">
+            Numerical stability: condition number κ(A) = ||A|| ||A^(-1)||<br>
+            FFT: O(n log n) instead of O(n²) for DFT<br>
+            BatchNorm: y = γ(x-μ)/σ + β (normalize then scale/shift)
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Topology & Manifold Learning</span> <span class="tag math">shape of data</span></summary>
+          <div class="math-desc">Understanding the geometric structure of high-dimensional data and latent spaces in deep learning.</div>
+          <ul>
+            <li class="math-concept">Manifold Theory & Embeddings</li>
+            <li class="math-concept">Riemannian Geometry</li>
+            <li class="math-concept">Persistent Homology</li>
+            <li class="math-concept">Dimensionality Reduction (t-SNE, UMAP)</li>
+            <li class="math-concept">Geometric Deep Learning</li>
+          </ul>
+          <div class="math-formula">
+            t-SNE: P(j|i) = exp(-||x_i-x_j||²/2σ_i²) / Σ exp(-||x_i-x_k||²/2σ_i²)<br>
+            Manifold assumption: high-dim data lies on low-dim manifold
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Game Theory & Decision Theory</span> <span class="tag math">strategic learning</span></summary>
+          <div class="math-desc">Foundation for multi-agent systems, GANs, reinforcement learning, and AI safety research.</div>
+          <ul>
+            <li class="math-concept">Nash Equilibrium & Game Solutions</li>
+            <li class="math-concept">Minimax & Zero-sum Games</li>
+            <li class="math-concept">Mechanism Design</li>
+            <li class="math-concept">Auction Theory</li>
+            <li class="math-concept">Markov Decision Processes (MDPs)</li>
+            <li class="math-concept">Multi-Agent Reinforcement Learning</li>
+          </ul>
+          <div class="math-formula">
+            Minimax: min_θ max_φ V(θ,φ) (GANs)<br>
+            Bellman: V(s) = max_a Σ P(s'|s,a)[R(s,a,s') + γV(s')]<br>
+            Nash: strategies where no player benefits from unilateral change
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="branch">Measure Theory & Advanced Probability</span> <span class="tag math">rigorous foundations</span></summary>
+          <div class="math-desc">Provides rigorous mathematical foundations for probability theory, stochastic processes, and learning theory.</div>
+          <ul>
+            <li class="math-concept">σ-algebras & Measure Spaces</li>
+            <li class="math-concept">Lebesgue Integration</li>
+            <li class="math-concept">Martingales & Stopping Times</li>
+            <li class="math-concept">Concentration Inequalities</li>
+            <li class="math-concept">PAC Learning Theory</li>
+            <li class="math-concept">VC Dimension & Generalization Bounds</li>
+          </ul>
+          <div class="math-formula">
+            Hoeffding: P(|S_n - E[S_n]| ≥ t) ≤ 2exp(-2t²/n)<br>
+            PAC: P(error ≤ ε) ≥ 1-δ with sufficient samples<br>
+            VC bound: generalization error ≤ empirical error + complexity term
+          </div>
+        </details>
+
+      </details>
+    </section>
+
+    <!-- Metaheuristics & Optimization -->
+    <section class="card backbone-section">
+      <details open>
+        <summary><span class="branch">🔧 Metaheuristics & Optimization Paradigms</span> <span class="tag">algorithmic strategies</span></summary>
+        <div class="desc">Applied optimization strategies and search algorithms that leverage mathematical foundations to solve complex problems across domains.</div>
+        
+        <details>
+          <summary><span class="branch">Classical Optimization Algorithms</span> <span class="tag">deterministic methods</span></summary>
+          <div class="math-desc">Direct application of calculus and linear algebra for systematic optimization.</div>
+          <details>
+            <summary>🔷 Gradient-Based Methods</summary>
+            <ul>
+              <li class="model">Steepest Descent</li>
+              <li class="math-concept">θ(t+1) = θ(t) - α∇f(θ(t))</li>
+              <li class="model">Newton's Method</li>
+              <li class="math-concept">θ(t+1) = θ(t) - [∇²f(θ(t))]⁻¹∇f(θ(t))</li>
+              <li class="model">Quasi-Newton (BFGS, L-BFGS)</li>
+              <li class="math-concept">Hessian approximation, limited memory variants</li>
+              <li class="model">Conjugate Gradient</li>
+              <li class="math-concept">Orthogonal search directions, quadratic convergence</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Constrained Optimization</summary>
+            <ul>
+              <li class="model">Sequential Quadratic Programming (SQP)</li>
+              <li class="math-concept">Quadratic subproblems, KKT conditions</li>
+              <li class="model">Interior Point Methods</li>
+              <li class="math-concept">Barrier functions, primal-dual algorithms</li>
+              <li class="model">Active Set Methods</li>
+              <li class="math-concept">Working set strategy, constraint identification</li>
+              <li class="model">Penalty & Augmented Lagrangian</li>
+              <li class="math-concept">ℓ(x,λ,μ) = f(x) + λᵀh(x) + μ/2||h(x)||²</li>
+            </ul>
+          </details>
+        </details>
+
+        <details>
+          <summary><span class="branch">Metaheuristic Methods</span> <span class="tag">nature-inspired</span></summary>
+          <div class="math-desc">Bio-inspired and physics-inspired algorithms for global optimization and search.</div>
+          <details>
+            <summary>🔷 Evolutionary Algorithms</summary>
+            <ul>
+              <li class="model">Genetic Algorithm (GA)</li>
+              <li class="math-concept">Selection, crossover, mutation operators</li>
+              <li class="model">Evolution Strategy (ES)</li>
+              <li class="math-concept">(μ,λ)-ES: μ parents, λ offspring, selection</li>
+              <li class="model">Differential Evolution (DE)</li>
+              <li class="math-concept">v = x_r1 + F(x_r2 - x_r3), mutation factor F</li>
+              <li class="model">Genetic Programming (GP)</li>
+              <li class="math-concept">Tree-based program evolution, parse trees</li>
+              <li class="model">NSGA-II/III</li>
+              <li class="math-concept">Multi-objective optimization, Pareto dominance</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Swarm Intelligence</summary>
+            <ul>
+              <li class="model">Particle Swarm Optimization (PSO)</li>
+              <li class="math-concept">v(t+1) = w·v(t) + c₁r₁(p_best - x) + c₂r₂(g_best - x)</li>
+              <li class="model">Ant Colony Optimization (ACO)</li>
+              <li class="math-concept">Pheromone trails, probabilistic path construction</li>
+              <li class="model">Artificial Bee Colony (ABC)</li>
+              <li class="math-concept">Employed/onlooker/scout bees, waggle dance</li>
+              <li class="model">Firefly Algorithm</li>
+              <li class="math-concept">Attractiveness β₀e^(-γr²), distance-based movement</li>
+              <li class="model">Grey Wolf Optimizer (GWO)</li>
+              <li class="math-concept">α, β, δ wolves hierarchy, encircling prey</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Physics-Based Algorithms</summary>
+            <ul>
+              <li class="model">Simulated Annealing (SA)</li>
+              <li class="math-concept">P(accept) = exp(-ΔE/kT), cooling schedule</li>
+              <li class="model">Gravitational Search Algorithm</li>
+              <li class="math-concept">F = G·M₁M₂/R², gravitational force</li>
+              <li class="model">Big Bang-Big Crunch</li>
+              <li class="math-concept">Expansion and contraction phases</li>
+              <li class="model">Harmony Search</li>
+              <li class="math-concept">HMCR, PAR parameters, pitch adjustment</li>
+              <li class="model">Water Cycle Algorithm</li>
+              <li class="math-concept">Evaporation, condensation, precipitation</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Human-Based Algorithms</summary>
+            <ul>
+              <li class="model">Teaching-Learning Based Optimization</li>
+              <li class="math-concept">Teacher phase, learner phase interactions</li>
+              <li class="model">Imperialist Competitive Algorithm</li>
+              <li class="math-concept">Empires, colonies, assimilation policy</li>
+              <li class="model">Social Spider Optimization</li>
+              <li class="math-concept">Vibrations on web, mating behavior</li>
+              <li class="model">Brain Storm Optimization</li>
+              <li class="math-concept">Brainstorming process, idea generation</li>
+            </ul>
+          </details>
+        </details>
+
+        <details>
+          <summary><span class="branch">Specialized Search Algorithms</span> <span class="tag">domain-specific</span></summary>
+          <div class="math-desc">Tailored algorithms for specific problem structures and constraints.</div>
+          <details>
+            <summary>🔷 Tree & Graph Search</summary>
+            <ul>
+              <li class="model">A* Search</li>
+              <li class="math-concept">f(n) = g(n) + h(n), admissible heuristic</li>
+              <li class="model">Branch and Bound</li>
+              <li class="math-concept">Lower bounds, pruning strategies</li>
+              <li class="model">Monte Carlo Tree Search (MCTS)</li>
+              <li class="math-concept">UCB1: x̄ᵢ + √(2lnn/nᵢ), exploration-exploitation</li>
+              <li class="model">Minimax with Alpha-Beta</li>
+              <li class="math-concept">Game tree pruning, α-β cutoffs</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Local Search Methods</summary>
+            <ul>
+              <li class="model">Hill Climbing</li>
+              <li class="math-concept">Greedy local improvement, local optima</li>
+              <li class="model">Tabu Search</li>
+              <li class="math-concept">Tabu list, aspiration criteria, memory structures</li>
+              <li class="model">Variable Neighborhood Search</li>
+              <li class="math-concept">Systematic neighborhood changes</li>
+              <li class="model">Iterated Local Search</li>
+              <li class="math-concept">Perturbation and local search cycles</li>
+              <li class="model">GRASP (Greedy Randomized)</li>
+              <li class="math-concept">Construction + local search phases</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Hybrid & Multi-Objective</summary>
+            <ul>
+              <li class="model">Memetic Algorithms</li>
+              <li class="math-concept">Evolution + local search combination</li>
+              <li class="model">MOEA/D (Multi-Objective EA)</li>
+              <li class="math-concept">Decomposition approach, weight vectors</li>
+              <li class="model">SPEA2 (Strength Pareto)</li>
+              <li class="math-concept">Strength calculation, archive maintenance</li>
+              <li class="model">Scatter Search</li>
+              <li class="math-concept">Reference set, diversification generation</li>
+            </ul>
+          </details>
+        </details>
+
+        <details>
+          <summary><span class="branch">Optimization Test Functions & Benchmarks</span> <span class="tag">evaluation</span></summary>
+          <div class="math-desc">Standard benchmark problems for algorithm testing and comparison.</div>
+          <details>
+            <summary>🔷 Classical Test Functions</summary>
+            <ul>
+              <li class="model">Sphere Function</li>
+              <li class="math-concept">f(x) = Σxᵢ², unimodal, separable</li>
+              <li class="model">Rosenbrock Function</li>
+              <li class="math-concept">f(x) = Σ[100(xᵢ₊₁-xᵢ²)² + (1-xᵢ)²], banana-shaped</li>
+              <li class="model">Rastrigin Function</li>
+              <li class="math-concept">f(x) = An + Σ[xᵢ² - A cos(2πxᵢ)], multimodal</li>
+              <li class="model">Ackley Function</li>
+              <li class="math-concept">Exponential and cosine terms, many local optima</li>
+              <li class="model">Griewank Function</li>
+              <li class="math-concept">f(x) = 1 + (1/4000)Σxᵢ² - Π cos(xᵢ/√i)</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 CEC Competition Functions</summary>
+            <ul>
+              <li class="model">CEC 2013/2017/2020 Suites</li>
+              <li class="math-concept">Shifted, rotated, composed functions</li>
+              <li class="model">Large-Scale Optimization</li>
+              <li class="math-concept">High-dimensional problems, scalability testing</li>
+              <li class="model">Multi-Modal Optimization</li>
+              <li class="math-concept">Multiple global optima, niching methods</li>
+              <li class="model">Expensive Optimization</li>
+              <li class="math-concept">Limited function evaluations, surrogate models</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Real-World Inspired Problems</summary>
+            <ul>
+              <li class="model">Traveling Salesman Problem (TSP)</li>
+              <li class="math-concept">Combinatorial optimization, Hamiltonian cycle</li>
+              <li class="model">Knapsack Problems</li>
+              <li class="math-concept">0-1, bounded, unbounded variants</li>
+              <li class="model">Vehicle Routing Problem</li>
+              <li class="math-concept">Capacity constraints, time windows</li>
+              <li class="model">Job Shop Scheduling</li>
+              <li class="math-concept">Makespan minimization, precedence constraints</li>
+              <li class="model">Portfolio Optimization</li>
+              <li class="math-concept">Risk-return tradeoff, correlation matrices</li>
+            </ul>
+          </details>
+        </details>
+
+        <details>
+          <summary><span class="branch">Modern Optimization Paradigms</span> <span class="tag hot">contemporary approaches</span></summary>
+          <div class="math-desc">Recent developments combining traditional methods with machine learning.</div>
+          <details>
+            <summary>🔷 Learning-Augmented Optimization</summary>
+            <ul>
+              <li class="model">Neural Evolution Strategies</li>
+              <li class="math-concept">ES with neural networks, policy gradients</li>
+              <li class="model">Differentiable Evolution</li>
+              <li class="math-concept">Gradient-based evolution, relaxed operations</li>
+              <li class="model">Meta-Learning for Optimization</li>
+              <li class="math-concept">Learning to optimize, algorithm configuration</li>
+              <li class="model">Bayesian Optimization</li>
+              <li class="math-concept">Gaussian process surrogates, acquisition functions</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Quantum-Inspired Algorithms</summary>
+            <ul>
+              <li class="model">Quantum Evolutionary Algorithm</li>
+              <li class="math-concept">Quantum bit representation, rotation gates</li>
+              <li class="model">Quantum Particle Swarm</li>
+              <li class="math-concept">Quantum mechanics principles in PSO</li>
+              <li class="model">Quantum Annealing</li>
+              <li class="math-concept">Adiabatic quantum computation, Ising models</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Distributed & Parallel Optimization</summary>
+            <ul>
+              <li class="model">Island Model GA</li>
+              <li class="math-concept">Population islands, migration strategies</li>
+              <li class="model">Asynchronous Evolution</li>
+              <li class="math-concept">Non-blocking parallel evaluation</li>
+              <li class="model">MapReduce Optimization</li>
+              <li class="math-concept">Distributed fitness evaluation, reduce operations</li>
+              <li class="model">GPU-Accelerated Algorithms</li>
+              <li class="math-concept">Massive parallelization, CUDA implementations</li>
+            </ul>
+          </details>
+        </details>
+
+      </details>
+    </section>
+
     <footer>
       *This comprehensive family tree includes both established and emerging models with their mathematical foundations. Some future versions are speculative. The mathematical descriptions provide the theoretical backbone underlying each AI system.
       <br><br>
       <strong>Last updated:</strong> August 2025 | 
       <a href="#" onclick="expandAll()">Expand All</a> | 
-      <a href="#" onclick="collapseAll()">Collapse All</a> |
-      <a href="#" onclick="toggleMath()">Toggle Math Details</a>
+      <a href="#" onclick="collapseAll()">Collapse All</a>
     </footer>
   </div>
 

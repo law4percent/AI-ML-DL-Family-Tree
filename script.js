@@ -9,14 +9,6 @@ function collapseAll() {
   document.querySelectorAll('details')[1].open = true; // AI branch
 }
 
-function toggleMath() {
-  const mathDescs = document.querySelectorAll('.math-desc, .math-concept, .math-formula');
-  const isVisible = mathDescs[0].style.display !== 'none';
-  mathDescs.forEach(el => {
-    el.style.display = isVisible ? 'none' : 'block';
-  });
-}
-
 // Add click analytics
 document.querySelectorAll('summary').forEach(summary => {
   summary.addEventListener('click', (e) => {
@@ -39,7 +31,6 @@ document.addEventListener('keydown', (e) => {
     }
   } else if (e.key === 'M' && e.ctrlKey) {
     e.preventDefault();
-    toggleMath();
   }
 });
 
