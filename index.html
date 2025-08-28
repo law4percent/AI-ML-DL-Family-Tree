@@ -1532,6 +1532,93 @@
         </details>
 
         <details>
+          <summary><span class="branch">Activation Functions</span> <span class="tag math">non-linear transformations</span></summary>
+          <div class="math-desc">Activation functions are grouped into families based on their shape, properties, and mathematical origins (e.g., logistic/sigmoid-based, piecewise linear like ReLU, probabilistic like Softmax).</div>
+          <details>
+            <summary>🔷 Sigmoid Family</summary>
+            <ul>
+              <li class="model">Sigmoid (Logistic)</li>
+              <li class="math-concept">σ(x) = 1/(1 + e^(-x)), output ∈ (0,1)</li>
+              <li class="model">Tanh (Hyperbolic Tangent)</li>
+              <li class="math-concept">tanh(x) = (e^x - e^(-x))/(e^x + e^(-x)), output ∈ (-1,1)</li>
+              <li class="model">Hard Sigmoid</li>
+              <li class="math-concept">max(0, min(1, 0.25x + 0.5)), computationally efficient</li>
+              <li class="model">Logit (Inverse Sigmoid)</li>
+              <li class="math-concept">logit(p) = ln(p/(1-p)), inverse of sigmoid</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 ReLU Family</summary>
+            <ul>
+              <li class="model">ReLU (Rectified Linear Unit)</li>
+              <li class="math-concept">ReLU(x) = max(0, x), simple and effective</li>
+              <li class="model">Leaky ReLU</li>
+              <li class="math-concept">LeakyReLU(x) = max(αx, x), α ≈ 0.01</li>
+              <li class="model">Parametric ReLU (PReLU)</li>
+              <li class="math-concept">PReLU(x) = max(αx, x), learnable α parameter</li>
+              <li class="model">Exponential Linear Unit (ELU)</li>
+              <li class="math-concept">ELU(x) = x if x>0, α(e^x - 1) if x≤0</li>
+              <li class="model">Scaled ELU (SELU)</li>
+              <li class="math-concept">SELU(x) = λ·ELU(x), self-normalizing property</li>
+              <li class="model">Gaussian Error Linear Unit (GELU)</li>
+              <li class="math-concept">GELU(x) = x·Φ(x), smooth ReLU approximation</li>
+              <li class="model">Mish</li>
+              <li class="math-concept">Mish(x) = x·tanh(softplus(x)) = x·tanh(ln(1+e^x))</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Softmax & Normalization</summary>
+            <ul>
+              <li class="model">Softmax</li>
+              <li class="math-concept">softmax(x_i) = e^(x_i)/Σe^(x_j), probability distribution</li>
+              <li class="model">Log Softmax</li>
+              <li class="math-concept">log_softmax(x_i) = x_i - log(Σe^(x_j)), numerical stability</li>
+              <li class="model">Sparsemax</li>
+              <li class="math-concept">Sparse probability distribution, L2 projection</li>
+              <li class="model">Entmax</li>
+              <li class="math-concept">α-entmax, generalizes softmax and sparsemax</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Smooth & Continuous</summary>
+            <ul>
+              <li class="model">Softplus</li>
+              <li class="math-concept">softplus(x) = ln(1 + e^x), smooth ReLU</li>
+              <li class="model">Softsign</li>
+              <li class="math-concept">softsign(x) = x/(1 + |x|), bounded alternative to tanh</li>
+              <li class="model">Swish (SiLU)</li>
+              <li class="math-concept">Swish(x) = x·σ(βx), self-gated activation</li>
+              <li class="model">Gaussian</li>
+              <li class="math-concept">Gaussian(x) = e^(-x²), bell-shaped curve</li>
+            </ul>
+          </details>
+          <details>
+            <summary>🔷 Advanced & Specialized</summary>
+            <ul>
+              <li class="model">Maxout</li>
+              <li class="math-concept">max(w₁ᵀx + b₁, w₂ᵀx + b₂), learnable activation</li>
+              <li class="model">Concatenated ReLU (CReLU)</li>
+              <li class="math-concept">[ReLU(x), ReLU(-x)], preserves negative information</li>
+              <li class="model">Randomized Leaky ReLU (RReLU)</li>
+              <li class="math-concept">Random α during training, fixed during testing</li>
+              <li class="model">Bent Identity</li>
+              <li class="math-concept">f(x) = (√(x² + 1) - 1)/2 + x</li>
+              <li class="model">Sinusoidal</li>
+              <li class="math-concept">sin(x), periodic activation for specialized tasks</li>
+            </ul>
+          </details>
+          <div class="math-formula">
+            Key Properties:<br>
+            • Differentiability: enables backpropagation<br>
+            • Non-linearity: allows learning complex functions<br>
+            • Monotonicity: preserves input ordering<br>
+            • Bounded vs Unbounded: affects gradient flow<br>
+            Vanishing Gradient: sigmoid/tanh → 0 gradients in deep networks<br>
+            Dead Neurons: ReLU units can stop learning (always output 0)
+          </div>
+        </details>
+
+        <details>
           <summary><span class="branch">Probability & Statistics</span> <span class="tag math">uncertainty & learning</span></summary>
           <div class="math-desc">Handles uncertainty, enables Bayesian learning, and provides theoretical foundations for many ML algorithms.</div>
           <ul>
@@ -1807,7 +1894,7 @@
           </details>
           <details>
             <summary>🔷 Multiple Criteria Decision Making (MCDM)</summary>
-            <div class="math-desc">Decision-making frameworks for problems with multiple conflicting objectives and criteria.</div>
+            <div class="math-desc">Decision-support and ranking frameworks for evaluating multiple conflicting objectives, complementing optimization methods.</div>
             <ul>
               <li class="model">AHP (Analytic Hierarchy Process)</li>
               <li class="math-concept">Pairwise comparison matrix, eigenvalue method, consistency ratio</li>
