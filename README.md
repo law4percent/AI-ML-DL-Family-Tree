@@ -97,13 +97,6 @@ AI (Umbrella Field)
 - **Active maintenance** with quarterly updates planned
 - **Community contributions** welcome via issues and pull requests
 
-### Future Roadmap
-- [ ] **Search functionality** for quick model lookup
-- [ ] **Filtering options** by year, company, domain
-- [ ] **Model comparison views** with parameter counts and capabilities
-- [ ] **Interactive tutorials** for each major domain
-- [ ] **API integration** for real-time model performance data
-
 ## 🤝 Contributing
 
 We welcome contributions to keep this family tree current and comprehensive:
